@@ -1,0 +1,11 @@
+SHOW DATABASES;
+USE libraryDB;
+
+SHOW TABLES;
+
+DESCRIBE users;
+
+SHOW COULUMNS FROM books;
+
+
+
