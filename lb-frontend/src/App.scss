@@ -1,14 +1,17 @@
-@import '~bootstrap/scss/bootstrap';
 
 $theme-colors: (
-  'app-bg': rgb(216, 205, 203),
+  'info': tomato,
   'danger': teal
-);
+  );
 
+@import '~bootstrap/scss/bootstrap';
+  
 .app-bg {
   background-color: rgb(228, 238, 243);
   height: 100vh;
 }
+
+// === Navigation ===
 .nav-bg {
   background-color: rgb(205, 210, 210);
 }
@@ -17,32 +20,38 @@ $theme-colors: (
   margin-top: 5px;
 }
 
-.welcome {
-  margin-top: -30rem;
+// === Login and Register page ===
+.welcome-title {
+  margin-top: 7rem;
+  padding-left: 5rem;
+
+  @media (max-width: 575.98px) { 
+    margin-top: 3rem;
+  }
 }
 .welcome-img {
-  width: 20rem;
-  margin-left: 3em;
-  margin-top: -5em;
+  width: 15rem;
+  display: flex;
+  justify-content: space-evenly;
+
+  @media (max-width: 575.98px) { 
+    width: 10rem; 
+  }
 }
+.form-width {
+  width: 60%;
+  margin: 0 auto;
+}
+
+// === Home page ===
 .home-img {
   display: flex;
   height: 12rem;
-  // justify-self: flex-end;
   margin-left: 80%;
-
 }
 
-.login-container {
-    display: flex;
-    height: 80vh;
-    justify-content: center;
-    align-items: center;
-}
 
-.wrapper {
-  width: 40%;
-}
+
 
 
 

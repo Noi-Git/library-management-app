@@ -1,35 +1,46 @@
-import Button from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form'
+import { Container, Button, Form, Row, Col } from 'react-bootstrap'
 import reading from '../../assets/images/reading.png'
 
 const Login = () => {
   return (
     <>
-      <div className='login-container'>
-        <h2 className='welcome'>Welcome to Library</h2>
-        <div className='wrapper'>
-          <Form>
-            <Form.Group className='mb-3' controlId='formBasicEmail'>
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type='email' placeholder='Enter email' />
-            </Form.Group>
+      <Container>
+        <Row className='my-5'>
+          <Col>
+            <h2 className='welcome-title'>Welcome to Library</h2>
+          </Col>
+          <Col xs='5'>
+            <img
+              className='welcome-img'
+              src={reading}
+              alt='Gnome reading a book'
+            />
+          </Col>
+        </Row>
 
-            <Form.Group className='mb-3' controlId='formBasicPassword'>
-              <Form.Label>Password</Form.Label>
-              <Form.Control type='password' placeholder='Password' />
-            </Form.Group>
+        <Row className=' form-width'>
+          <Col>
+            <Form>
+              <Form.Group className='mb-3' controlId='formBasicEmail'>
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type='email' placeholder='Enter email' />
+              </Form.Group>
 
-            <Button variant='primary' type='submit'>
-              Submit
-            </Button>
-            <Form.Group className='mt-3' controlId='formBasicCheckbox'>
-              <Form.Label>Don't have an account .. register ..</Form.Label>
-            </Form.Group>
-          </Form>
-        </div>
+              <Form.Group className='mb-3' controlId='formBasicPassword'>
+                <Form.Label>Password</Form.Label>
+                <Form.Control type='password' placeholder='Password' />
+              </Form.Group>
+              <Button variant='primary' type='submit'>
+                Submit
+              </Button>
 
-        <img className='welcome-img' src={reading} alt='' />
-      </div>
+              <Form.Group className='mt-3'>
+                <Form.Label>Don't have an account .. register ..</Form.Label>
+              </Form.Group>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     </>
   )
 }
