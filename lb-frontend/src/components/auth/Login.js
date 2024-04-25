@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Navigate } from 'react-router-dom'
 import { Container, Button, Form, Row, Col } from 'react-bootstrap'
 import reading from '../../assets/images/reading.png'
 import {
@@ -37,6 +38,7 @@ const Login = () => {
 
   return (
     <>
+      {userLoggedIn && <Navigate to={'/'} replace={true} />}
       <Container>
         <Row className='my-5'>
           <Col>
@@ -53,7 +55,7 @@ const Login = () => {
 
         <Row className=' form-width'>
           <Col>
-            <Form>
+            <Form onSubmit>
               <Form.Group className='mb-3' controlId='formBasicEmail'>
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type='email' placeholder='Enter email' />
