@@ -1,9 +1,12 @@
-const express = require('express')
-const mysql = require('mysql2')
-const cors = require('cors')
-const dotenv = require('dotenv')
+import express from 'express'
+import { getGlobals } from 'common-es'
+import mysql from 'mysql2'
+import cors from 'cors'
+import dotenv from 'dotenv'
 
-dotenv.config({ path: `${__dirname}/config.env` })
+const { __dirname } = getGlobals(import.meta.url)
+
+dotenv.config({ path: `${__dirname}/config/config.env` })
 
 const app = express()
 app.use(express.json())
@@ -39,5 +42,7 @@ app.get('/books', (req, res) => {
 // const PORT = process.env.PORT || 3307
 
 app.listen(process.env.PORT, () => {
-  console.log(`Server is Listing on port: ${process.env.PORT}`)
+  console.log(
+    `Server is Listing on port: ${process.env.PORT} in ${process.env.NODE_ENV} mode.`
+  )
 })
