@@ -1,7 +1,17 @@
 import { Container, Button, Form, Row, Col } from 'react-bootstrap'
 import book from '../../assets/images/book.png'
+import { useState } from 'react'
 
 const Register = () => {
+  const [inputs, setInputs] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+  })
+
+  const handleChange = (e) => {}
+
   return (
     <>
       <Container>
