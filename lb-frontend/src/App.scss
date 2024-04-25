@@ -1,38 +1,62 @@
-.App {
-  text-align: center;
+
+$theme-colors: (
+  'info': tomato,
+  'danger': teal
+  );
+
+@import '~bootstrap/scss/bootstrap';
+  
+.app-bg {
+  background-color: rgb(228, 238, 243);
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+// === Navigation ===
+.logo {
+  font-size: 1.5rem;
+  margin-top: 5px;
+}
+.nav-bg {
+  background-color: rgb(205, 210, 210);
+}
+.nav-link {
+  color: inherit;
+  text-decoration: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+
+// === Login and Register page ===
+.welcome-title {
+  margin-top: 7rem;
+  padding-left: 5rem;
+
+  @media (max-width: 575.98px) { 
+    margin-top: 3rem;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.welcome-img {
+  width: 15rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  justify-content: space-evenly;
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+  @media (max-width: 575.98px) { 
+    width: 10rem; 
   }
 }
+.form-width {
+  width: 60%;
+  margin: 0 auto;
+}
+
+// === Home page ===
+.home-img {
+  display: flex;
+  height: 12rem;
+  margin-left: 80%;
+}
+
+
+
+
+
+
