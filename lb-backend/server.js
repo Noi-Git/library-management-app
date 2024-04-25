@@ -38,6 +38,6 @@ app.get('/books', (req, res) => {
 
 // const PORT = process.env.PORT || 3307
 
-app.listen(3307, () => {
-  console.log('Server is Listing')
+app.listen(process.env.PORT, () => {
+  console.log(`Server is Listing on port: ${process.env.PORT}`)
 })
