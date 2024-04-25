@@ -12,7 +12,7 @@ dotenv.config({ path: `${__dirname}/config/config.env` })
 app.use(express.json())
 app.use(cors())
 
-const db = mysql.createConnection({
+export const db = mysql.createConnection({
   host: process.env.DATABASE_HOST,
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
