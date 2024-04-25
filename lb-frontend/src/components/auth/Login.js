@@ -9,36 +9,36 @@ import {
 import { useAuth } from '../contexts/authContext'
 
 const Login = () => {
-  const { userLoggedIn } = useAuth()
+  // const { userLoggedIn } = useAuth()
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [isSigningIn, setIsSigningIn] = useState(false)
-  const [errorMessage, setErrorMessage] = useState('')
+  // const [email, setEmail] = useState('')
+  // const [password, setPassword] = useState('')
+  // const [isSigningIn, setIsSigningIn] = useState(false)
+  // const [errorMessage, setErrorMessage] = useState('')
 
-  const onSubmit = async (e) => {
-    e.preventDefault()
+  // const onSubmit = async (e) => {
+  //   e.preventDefault()
 
-    if (!isSigningIn) {
-      setIsSigningIn(true)
-      await doSignInWithEmailAndPassword(email, password)
-    }
-  }
+  //   if (!isSigningIn) {
+  //     setIsSigningIn(true)
+  //     await doSignInWithEmailAndPassword(email, password)
+  //   }
+  // }
 
-  const onGoogleSignIn = async (e) => {
-    e.preventDefault()
+  // const onGoogleSignIn = async (e) => {
+  //   e.preventDefault()
 
-    if (!isSigningIn) {
-      setIsSigningIn(true)
-      doSignInWithGoogle().catch((err) => {
-        setIsSigningIn(false)
-      })
-    }
-  }
+  //   if (!isSigningIn) {
+  //     setIsSigningIn(true)
+  //     doSignInWithGoogle().catch((err) => {
+  //       setIsSigningIn(false)
+  //     })
+  //   }
+  // }
 
   return (
     <>
-      {userLoggedIn && <Navigate to={'/'} replace={true} />}
+      {/* {userLoggedIn && <Navigate to={'/'} replace={true} />} */}
       <Container>
         <Row className='my-5'>
           <Col>
