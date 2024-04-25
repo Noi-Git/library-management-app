@@ -1,4 +1,5 @@
 import express from 'express'
+const app = express()
 import { getGlobals } from 'common-es'
 import mysql from 'mysql2'
 import cors from 'cors'
@@ -8,7 +9,6 @@ const { __dirname } = getGlobals(import.meta.url)
 
 dotenv.config({ path: `${__dirname}/config/config.env` })
 
-const app = express()
 app.use(express.json())
 app.use(cors())
 
@@ -19,27 +19,38 @@ const db = mysql.createConnection({
   database: process.env.DATABASE_NAME,
 })
 
-app.get('/', (req, res) => {
-  return res.json('From backend Side')
-})
+//=== import all routes ===
+import authRoutes from './routes/auths.js'
+import bookRoutes from './routes/books.js'
+import postRoutes from './routes/posts.js'
+import userRoutes from './routes/users.js'
 
-app.get('/users', (req, res) => {
-  const sql = 'SELECT * FROM users;'
-  db.query(sql, (err, data) => {
-    if (err) return res.json(err)
-    return res.json(data)
-  })
-})
+//register route created in books.js
+// app.use('/api/v1', bookRoutes)
+app.use('/api/auths', authRoutes)
+app.use('/api/books', bookRoutes)
+app.use('/api/posts', postRoutes)
+app.use('/api/users', userRoutes)
 
-app.get('/books', (req, res) => {
-  const sql = 'SELECT * FROM books;'
-  db.query(sql, (err, data) => {
-    if (err) return res.json(err)
-    return res.json(data)
-  })
-})
+// app.get('/', (req, res) => {
+//   return res.json('From backend Side')
+// })
 
-// const PORT = process.env.PORT || 3307
+// app.get('/users', (req, res) => {
+//   const sql = 'SELECT * FROM users;'
+//   db.query(sql, (err, data) => {
+//     if (err) return res.json(err)
+//     return res.json(data)
+//   })
+// })
+
+// app.get('/books', (req, res) => {
+//   const sql = 'SELECT * FROM books;'
+//   db.query(sql, (err, data) => {
+//     if (err) return res.json(err)
+//     return res.json(data)
+//   })
+// })
 
 app.listen(process.env.PORT, () => {
   console.log(
