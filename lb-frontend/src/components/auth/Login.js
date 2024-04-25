@@ -1,7 +1,40 @@
+import { useState } from 'react'
 import { Container, Button, Form, Row, Col } from 'react-bootstrap'
 import reading from '../../assets/images/reading.png'
+import {
+  doSignInWithEmailAndPassword,
+  doSignInWithGoogle,
+} from '../firebase/auth'
+import { useAuth } from '../contexts/authContext'
 
 const Login = () => {
+  const { userLoggedIn } = useAuth()
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [isSigningIn, setIsSigningIn] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
+
+  const onSubmit = async (e) => {
+    e.preventDefault()
+
+    if (!isSigningIn) {
+      setIsSigningIn(true)
+      await doSignInWithEmailAndPassword(email, password)
+    }
+  }
+
+  const onGoogleSignIn = async (e) => {
+    e.preventDefault()
+
+    if (!isSigningIn) {
+      setIsSigningIn(true)
+      doSignInWithGoogle().catch((err) => {
+        setIsSigningIn(false)
+      })
+    }
+  }
+
   return (
     <>
       <Container>
