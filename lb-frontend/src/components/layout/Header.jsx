@@ -1,4 +1,3 @@
-import logo from '../../assets/images/library_logo.png'
 import avatar from '../../assets/images/profile.png'
 import cart from '../../assets/images/shopping_cart.png'
 
