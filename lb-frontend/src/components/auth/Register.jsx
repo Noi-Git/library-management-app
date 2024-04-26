@@ -1,4 +1,4 @@
-import { Container, Row, Col } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import book from '../../assets/images/book1x.png'
 import { useState } from 'react'
 import MetaData from '../layout/MetaData'

@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-export const bookApi = createApi({
-  reducerPath: 'bookApi',
+export const booksApi = createApi({
+  reducerPath: 'booksApi',
   baseQuery: fetchBaseQuery({ baseUrl: '/api/v1' }),
   //create endpoint
   endpoints: (builder) => ({
@@ -15,4 +15,4 @@ export const bookApi = createApi({
 //{useGetBooksQuery}
 //-- is hook that give us all product
 //-- including Loading, Success, Error
-export const { useGetBooksQuery } = bookApi
+export const { useGetBooksQuery } = booksApi

@@ -1,6 +1,8 @@
-import reading from '../../../assets/images/reading1x.png'
 import default_product from '../../../assets/images/default_product.png'
 import MetaData from '../../layout/MetaData'
+import { useGetBooksQuery } from '../../../redux/api/booksApi'
+
+// useGetBooksQuery()
 
 const Home = () => {
   return (
