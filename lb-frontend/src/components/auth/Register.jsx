@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Button, Form, Row, Col } from 'react-bootstrap'
 import book from '../../assets/images/book1x.png'
 import axios from 'axios'
@@ -13,6 +14,8 @@ const Register = () => {
   })
   const [error, setError] = useState(null)
 
+  const navigate = useNavigate()
+
   const handleChange = async (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
@@ -22,8 +25,8 @@ const Register = () => {
     e.preventDefault()
 
     try {
-      const res = await axios.post('/api/v1/auth/register', inputs)
-      console.log(res)
+      await axios.post('/api/v1/auth/register', inputs)
+      navigate('/login')
     } catch (err) {
       // console.log(err)
       setError(error.response.data)
