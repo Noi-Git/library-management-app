@@ -1,14 +1,19 @@
-// export const getBooks = async (req, res) => {
-//   const sql = 'SELECT * FROM books;'
-//   db.query(sql, (err, data) => {
-//     if (err) return res.json(err)
-//     return res.json(data)
-//   })
+export const getBooks = (req, res) => {
+  res.json('from book controller')
+}
 
-//   res.status(200).json({
-//     message: 'All books',
-//   })
-// }
+export const getBook = (req, res) => {
+  res.json('from book controller')
+}
 
-// create new book => /api/v1/admin/books
-// export const newBooks = async (req, res) => {}
+export const addBook = (req, res) => {
+  res.json('from book controller')
+}
+
+export const deleteBook = (req, res) => {
+  res.json('from book controller')
+}
+
+export const updateBook = (req, res) => {
+  res.json('from book controller')
+}
