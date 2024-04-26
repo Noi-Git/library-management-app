@@ -4,7 +4,8 @@ $theme-colors: (
   'danger': teal
   );
 
-@import '~bootstrap/scss/bootstrap';
+  @import '~bootstrap/scss/bootstrap.scss';
+;
   
 .app-bg {
   background-color: rgb(228, 238, 243);
@@ -15,6 +16,7 @@ $theme-colors: (
 .logo {
   font-size: 1.5rem;
   margin-top: 5px;
+  color: rgb(228, 238, 243);
 }
 .nav-bg {
   background-color: rgb(205, 210, 210);
@@ -43,6 +45,12 @@ $theme-colors: (
     width: 10rem; 
   }
 }
+.book-logo {
+  width:90px;
+}
+.shopping-cart {
+  width: 40px;
+}
 .form-width {
   width: 60%;
   margin: 0 auto;
@@ -55,7 +63,14 @@ $theme-colors: (
   margin-left: 80%;
 }
 
-
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: rgb(66, 66, 66);
+  color: rgb(205, 210, 210);
+  margin-top: 20px;
+}
 
 
 

@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { Container, Button, Form, Row, Col } from 'react-bootstrap'
-import reading from '../../assets/images/reading.png'
-import {
-  doSignInWithEmailAndPassword,
-  doSignInWithGoogle,
-} from '../firebase/auth'
-import { useAuth } from '../contexts/authContext'
+import reading from '../../assets/images/reading1x.png'
+// import {
+//   doSignInWithEmailAndPassword,
+//   doSignInWithGoogle,
+// } from '../firebase/auth'
+// import { useAuth } from '../contexts/authContext'
+import MetaData from '../layout/MetaData'
 
 const Login = () => {
   // const { userLoggedIn } = useAuth()
@@ -38,7 +39,7 @@ const Login = () => {
 
   return (
     <>
-      {/* {userLoggedIn && <Navigate to={'/'} replace={true} />} */}
+      <MetaData title={'Login page'} />
       <Container>
         <Row className='my-5'>
           <Col>
