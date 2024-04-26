@@ -24,19 +24,13 @@ export const db = mysql.createConnection({
 //=== import all routes ===
 import authRoutes from './routes/auths.js'
 import bookRoutes from './routes/books.js'
-import postRoutes from './routes/posts.js'
 import userRoutes from './routes/users.js'
 
 //register route created in books.js
 // app.use('/api/v1', bookRoutes)
 app.use('/api/v1/auths', authRoutes)
 app.use('/api/v1/books', bookRoutes)
-app.use('/api/v1/posts', postRoutes)
 app.use('/api/v1/users', userRoutes)
-
-// app.get('/', (req, res) => {
-//   return res.json('From backend Side')
-// })
 
 // app.get('/users', (req, res) => {
 //   const sql = 'SELECT * FROM users;'
