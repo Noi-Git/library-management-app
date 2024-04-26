@@ -46,7 +46,7 @@ export const addBook = (req, res) => {
       userInfo.user_id,
     ]
 
-    db.query(q, [value], (err, data) => {
+    db.query(q, [values], (err, data) => {
       if (err) return res.status(500).json(err)
       return resjson('Book has been created')
     })
@@ -79,5 +79,26 @@ export const deleteBook = (req, res) => {
 }
 
 export const updateBook = (req, res) => {
-  res.json('from book controller')
+  const token = req.cookies.access_token
+  if (!token) return res.status(401).json('Not authenticated!')
+
+  jwt.verify(token, 'jwtkey', (err, userInfo) => {
+    if (err) return res.status(403).json('Token is not valid!')
+
+    const q =
+      'UPDATE books SET `book_title`=?, `book_description`=?, `book_image_url`=?, `genre`=?, `author_name`=?, `total_copies`=? WHERE `book_id`=? AND `user_id`=?'
+
+    const values = [
+      req.body.book_title,
+      req.body.book_description,
+      req.body.book_image_url,
+      req.body.genre,
+      req.body.author_name,
+    ]
+
+    db.query(q, [...values], (err, data) => {
+      if (err) return res.status(500).json(err)
+      return resjson('Book has been created')
+    })
+  })
 }
