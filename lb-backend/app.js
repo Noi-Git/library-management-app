@@ -1,17 +1,21 @@
 import express from 'express'
-const app = express()
 import { getGlobals } from 'common-es'
 import mysql from 'mysql2'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 
-const { __dirname } = getGlobals(import.meta.url)
+// //=== import all routes ===
+import authRouter from './routes/auths.js'
+import bookRouter from './routes/books.js'
+import userRouter from './routes/users.js'
 
+const app = express()
+const { __dirname } = getGlobals(import.meta.url)
 dotenv.config({ path: `${__dirname}/config/config.env` })
 
 app.use(express.json())
-app.use(cookieParser)
+app.use(cookieParser())
 app.use(cors())
 
 export const db = mysql.createConnection({
@@ -21,32 +25,10 @@ export const db = mysql.createConnection({
   database: process.env.DATABASE_NAME,
 })
 
-//=== import all routes ===
-import authRoutes from './routes/auths.js'
-import bookRoutes from './routes/books.js'
-import userRoutes from './routes/users.js'
-
-//register route created in books.js
-// app.use('/api/v1', bookRoutes)
-app.use('/api/v1/auths', authRoutes)
-app.use('/api/v1/books', bookRoutes)
-app.use('/api/v1/users', userRoutes)
-
-// app.get('/users', (req, res) => {
-//   const sql = 'SELECT * FROM users;'
-//   db.query(sql, (err, data) => {
-//     if (err) return res.json(err)
-//     return res.json(data)
-//   })
-// })
-
-// app.get('/books', (req, res) => {
-//   const sql = 'SELECT * FROM books;'
-//   db.query(sql, (err, data) => {
-//     if (err) return res.json(err)
-//     return res.json(data)
-//   })
-// })
+//register route
+app.use('/api/v1/auths', authRouter)
+app.use('/api/v1/books', bookRouter)
+app.use('/api/v1/users', userRouter)
 
 app.listen(process.env.PORT, () => {
   console.log(
