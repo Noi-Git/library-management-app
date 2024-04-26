@@ -2,9 +2,10 @@ import default_product from '../../../assets/images/default_product.png'
 import MetaData from '../../layout/MetaData'
 import { useGetBooksQuery } from '../../../redux/api/booksApi'
 
-// useGetBooksQuery()
-
 const Home = () => {
+  const { data } = useGetBooksQuery()
+  console.log(data)
+
   return (
     <>
       <MetaData title={'Home page'} />
