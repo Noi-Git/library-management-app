@@ -7,12 +7,12 @@ import {
   updateBook,
 } from '../controllers/bookController.js'
 
-const router = express.Router()
+const bookRouter = express.Router()
 
-router.get('/', getBooks)
-router.get('/:id', getBook)
-router.post('/', addBook)
-router.delete('/:id', deleteBook)
-router.put('/:id', updateBook)
+bookRouter.get('/', getBooks)
+bookRouter.get('/:id', getBook)
+bookRouter.post('/', addBook)
+bookRouter.delete('/:id', deleteBook)
+bookRouter.put('/:id', updateBook)
 
-export default router
+export default bookRouter
