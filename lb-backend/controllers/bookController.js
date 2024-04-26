@@ -85,6 +85,7 @@ export const updateBook = (req, res) => {
   jwt.verify(token, 'jwtkey', (err, userInfo) => {
     if (err) return res.status(403).json('Token is not valid!')
 
+    const bookId = req.param.book_id
     const q =
       'UPDATE books SET `book_title`=?, `book_description`=?, `book_image_url`=?, `genre`=?, `author_name`=?, `total_copies`=? WHERE `book_id`=? AND `user_id`=?'
 
@@ -96,9 +97,9 @@ export const updateBook = (req, res) => {
       req.body.author_name,
     ]
 
-    db.query(q, [...values], (err, data) => {
+    db.query(q, [...values, bookId, userInfo.user_id], (err, data) => {
       if (err) return res.status(500).json(err)
-      return resjson('Book has been created')
+      return resjson('Book has been updated')
     })
   })
 }
