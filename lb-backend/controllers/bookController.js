@@ -14,6 +14,14 @@ export const getBooks = (req, res) => {
 
 export const getBook = (req, res) => {
   res.json('from book controller')
+  const q =
+    'SELECT `book_title`, `book_description`, `book_image_url`, FROM books b JOIN users u ON u.user_id === b.book_id WHERE b.book_id = ?'
+
+  db.query(q, [req.params.id], (err, data) => {
+    if (err) return res.json(err)
+
+    return res.status(200).json(data[0])
+  })
 }
 
 export const addBook = (req, res) => {
