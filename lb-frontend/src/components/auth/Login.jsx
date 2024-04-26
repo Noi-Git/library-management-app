@@ -7,6 +7,7 @@ import reading from '../../assets/images/reading1x.png'
 //   doSignInWithGoogle,
 // } from '../firebase/auth'
 // import { useAuth } from '../contexts/authContext'
+import MetaData from '../layout/MetaData'
 
 const Login = () => {
   // const { userLoggedIn } = useAuth()
@@ -38,7 +39,7 @@ const Login = () => {
 
   return (
     <>
-      {/* {userLoggedIn && <Navigate to={'/'} replace={true} />} */}
+      <MetaData title={'Login page'} />
       <Container>
         <Row className='my-5'>
           <Col>

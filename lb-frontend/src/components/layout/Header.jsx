@@ -7,9 +7,7 @@ const Header = () => {
     <nav className='nav navbar row'>
       <div className='col-12 col-md-3 ps-5'>
         <div className='navbar-brand'>
-          <a href='/'>
-            <img className='book-logo' src={logo} alt="Noi's library logo" />
-          </a>
+          <h1 className='logo'> Noi's Library App</h1>
         </div>
       </div>
       <div className='col-12 col-md-6 mt-2 mt-md-0'>

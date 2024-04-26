@@ -16,6 +16,7 @@ $theme-colors: (
 .logo {
   font-size: 1.5rem;
   margin-top: 5px;
+  color: rgb(228, 238, 243);
 }
 .nav-bg {
   background-color: rgb(205, 210, 210);
@@ -62,7 +63,14 @@ $theme-colors: (
   margin-left: 80%;
 }
 
-
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: rgb(66, 66, 66);
+  color: rgb(205, 210, 210);
+  margin-top: 20px;
+}
 
 
 
