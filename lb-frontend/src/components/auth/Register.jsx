@@ -1,6 +1,7 @@
+import { useState } from 'react'
 import { Button, Form, Row, Col } from 'react-bootstrap'
 import book from '../../assets/images/book1x.png'
-import { useState } from 'react'
+import axios from 'axios'
 import MetaData from '../layout/MetaData'
 
 const Register = () => {
@@ -11,11 +12,16 @@ const Register = () => {
     password: '',
   })
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
+  // console.log(inputs)
 
-  console.log(inputs)
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const res = axios.post('/api/v1/auth/register, inputs')
+  }
 
   return (
     <>
@@ -76,7 +82,7 @@ const Register = () => {
               />
             </Form.Group>
 
-            <Button variant='primary' type='submit'>
+            <Button variant='primary' type='submit' onSubmit={handleSubmit}>
               Submit
             </Button>
             <Form.Group className='mt-3'>
