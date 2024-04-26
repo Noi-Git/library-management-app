@@ -1,4 +1,4 @@
-import reading from '../../../assets/images/reading.png'
+import reading from '../../../assets/images/reading1x.png'
 
 const Home = () => {
   return (

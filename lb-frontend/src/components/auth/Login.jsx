@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { Container, Button, Form, Row, Col } from 'react-bootstrap'
-import reading from '../../assets/images/reading.png'
-import {
-  doSignInWithEmailAndPassword,
-  doSignInWithGoogle,
-} from '../firebase/auth'
-import { useAuth } from '../contexts/authContext'
+import reading from '../../assets/images/reading1x.png'
+// import {
+//   doSignInWithEmailAndPassword,
+//   doSignInWithGoogle,
+// } from '../firebase/auth'
+// import { useAuth } from '../contexts/authContext'
 
 const Login = () => {
   // const { userLoggedIn } = useAuth()
