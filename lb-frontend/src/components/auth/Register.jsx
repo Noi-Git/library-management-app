@@ -1,6 +1,8 @@
-import { Container, Row, Col } from 'react-bootstrap'
-import book from '../../assets/images/book1x.png'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Button, Form, Row, Col } from 'react-bootstrap'
+import book from '../../assets/images/book1x.png'
+import axios from 'axios'
 import MetaData from '../layout/MetaData'
 
 const Register = () => {
@@ -10,12 +12,29 @@ const Register = () => {
     email: '',
     password: '',
   })
+  const [error, setError] = useState(null)
 
-  const handleChange = (e) => {}
+  const navigate = useNavigate()
+
+  const handleChange = async (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+  // console.log(inputs)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      await axios.post('/api/v1/auth/register', inputs)
+      navigate('/login')
+    } catch (err) {
+      // console.log(err)
+      setError(error.response.data)
+    }
+  }
 
   return (
     <>
-      {/* <Container> */}
       <MetaData title={'Register page'} />
       <Row className='my-5'>
         <Col>
@@ -30,66 +49,61 @@ const Register = () => {
         </Col>
       </Row>
 
-      <div className='row wrapper'>
-        <div className='col-10 col-lg-5'>
-          <form
-            className='shadow rounded bg-body'
-            action='your_submit_url_here'
-            method='post'
-            enctype='multipart/form-data'
-          >
-            {/* <h2 className='mb-4'>Register</h2> */}
-
-            <div className='mb-3'>
-              <label for='name_field' className='form-label'>
-                Name
-              </label>
-              <input
+      <Row className=' form-width'>
+        <Col>
+          <Form>
+            <Form.Group className='mb-3' controlId='formBasicFirstname'>
+              <Form.Label>First name:</Form.Label>
+              <Form.Control
                 type='text'
-                id='name_field'
-                className='form-control'
-                name='name'
-                value=''
+                placeholder='Enter first name'
+                name='firstname'
+                onChange={handleChange}
               />
-            </div>
+            </Form.Group>
 
-            <div className='mb-3'>
-              <label for='email_field' className='form-label'>
-                Email
-              </label>
-              <input
+            <Form.Group className='mb-3' controlId='formBasicLastname'>
+              <Form.Label>Last name</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter last name'
+                name='lastname'
+                onChange={handleChange}
+              />
+            </Form.Group>
+
+            <Form.Group className='mb-3' controlId='formBasicEmail'>
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
                 type='email'
-                id='email_field'
-                className='form-control'
+                placeholder='Enter email'
                 name='email'
-                value=''
+                onChange={handleChange}
               />
-            </div>
+            </Form.Group>
 
-            <div className='mb-3'>
-              <label for='password_field' className='form-label'>
-                Password
-              </label>
-              <input
+            <Form.Group className='mb-3' controlId='formBasicPassword'>
+              <Form.Label>Password</Form.Label>
+              <Form.Control
                 type='password'
-                id='password_field'
-                className='form-control'
+                placeholder='Enter password'
                 name='password'
-                value=''
+                onChange={handleChange}
               />
-            </div>
+            </Form.Group>
 
-            <button
-              id='register_button'
-              type='submit'
-              className='btn w-100 py-2'
-            >
-              REGISTER
-            </button>
-          </form>
-        </div>
-      </div>
-      {/* </Container> */}
+            <Button variant='primary' type='submit' onClick={handleSubmit}>
+              Register
+            </Button>
+            {error && <p>{error}</p>}
+            <Form.Group className='mt-3'>
+              <Form.Text className='text-muted'>
+                We'll never share your email with anyone else.
+              </Form.Text>
+            </Form.Group>
+          </Form>
+        </Col>
+      </Row>
     </>
   )
 }
