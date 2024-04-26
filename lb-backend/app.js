@@ -4,12 +4,14 @@ import { getGlobals } from 'common-es'
 import mysql from 'mysql2'
 import cors from 'cors'
 import dotenv from 'dotenv'
+import cookieParser from 'cookie-parser'
 
 const { __dirname } = getGlobals(import.meta.url)
 
 dotenv.config({ path: `${__dirname}/config/config.env` })
 
 app.use(express.json())
+app.use(cookieParser)
 app.use(cors())
 
 export const db = mysql.createConnection({
