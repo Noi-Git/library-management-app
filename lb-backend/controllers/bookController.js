@@ -1,4 +1,5 @@
 import { db } from '../app.js'
+import jwt from 'jsonwebtoken'
 
 export const getBooks = (req, res) => {
   const q = req.query.genre_id
@@ -6,7 +7,7 @@ export const getBooks = (req, res) => {
     : 'SELECT * FROM books'
 
   db.query(q, [req.query.genre_id], (err, data) => {
-    if (err) return res.send(err)
+    if (err) return res.status(500).send(err)
 
     return res.status(200).json(data)
   })
@@ -19,7 +20,7 @@ export const getBook = (req, res) => {
   const q = 'SELECT * FROM books WHERE book_id = ?'
 
   db.query(q, [req.params.id], (err, data) => {
-    if (err) return res.json(err)
+    if (err) return res.status(500).json(err)
 
     return res.status(200).json(data[0])
   })
@@ -30,7 +31,27 @@ export const addBook = (req, res) => {
 }
 
 export const deleteBook = (req, res) => {
-  res.json('from book controller')
+  const token = req.cookies.access_token
+
+  if (!token) return res.status(401).json('Not authenticated!')
+
+  //verify json web token - id: data[0].user_id -
+  //it comes form authControllers when we are login
+  // -- const token = jwt.sign({ id: data[0].user_id }, 'jwtkey') --
+  jwt.verify(token, 'jwtkey', (err, userInfo) => {
+    if (err) return res.status(403).json('Token is not valid!')
+
+    //if the token valid - delete the item
+    const bookId = req.param.id
+    //`user_id` -- comes from userInfo
+    const q = 'DELETE FROM books WHERE `book_id` = ? AND `user_id` = ?'
+
+    db.query(q, [bookId, userInfo.user_id], (err, data) => {
+      if (err) return res.status(403).json('You can delete only your post!')
+
+      return res.json('Post has been deleted!')
+    })
+  })
 }
 
 export const updateBook = (req, res) => {
