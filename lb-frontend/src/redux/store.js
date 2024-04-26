@@ -1,9 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
+import { bookApi } from './api/bookApi'
 
 // import rootReducer from './reducers'
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    //register books api
+    [bookApi.reducerPath]: bookApi.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(bookApi.middleware),
 })
-
-// The store now has redux-thunk added and the Redux DevTools Extension is turned on
