@@ -11,16 +11,23 @@ const Register = () => {
     email: '',
     password: '',
   })
+  const [error, setError] = useState(null)
 
   const handleChange = async (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
   // console.log(inputs)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const res = axios.post('/api/v1/auth/register, inputs')
+    try {
+      const res = await axios.post('/api/v1/auth/register', inputs)
+      console.log(res)
+    } catch (err) {
+      // console.log(err)
+      setError(error.response.data)
+    }
   }
 
   return (
@@ -82,9 +89,10 @@ const Register = () => {
               />
             </Form.Group>
 
-            <Button variant='primary' type='submit' onSubmit={handleSubmit}>
-              Submit
+            <Button variant='primary' type='submit' onClick={handleSubmit}>
+              Register
             </Button>
+            {error && <p>{error}</p>}
             <Form.Group className='mt-3'>
               <Form.Text className='text-muted'>
                 We'll never share your email with anyone else.
