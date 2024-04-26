@@ -13,6 +13,6 @@ router.get('/', getBooks)
 router.get('/:id', getBook)
 router.post('/', addBook)
 router.delete('/:id', deleteBook)
-router.update('/:id', updateBook)
+router.put('/:id', updateBook)
 
 export default router
