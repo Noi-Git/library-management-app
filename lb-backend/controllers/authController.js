@@ -30,7 +30,7 @@ export const login = (req, res) => {
   //check user if user exist
   const q = 'SELECT * FROM users WHERE username = ?'
 
-  db.query(q, [req, body, username], (err, data) => {
+  db.query(q, [req.body.username], (err, data) => {
     //if err
     if (err) return res.json(err)
     //show errow message if user does not exist
@@ -50,13 +50,15 @@ export const login = (req, res) => {
 
   //store user data in cookies - to check if user who try to create new record is the same user login
   const token = jwt.sign({ id: data[0].user_id }, 'jwtkey')
+  //send only the hash password - not all user information
+  const { password, ...other } = data[0]
 
   res
     .cookie('access_token', token, {
       httpOnly: true, //means-the script in the app cannot directly reach cookie - it only user for making an api request
     })
     .status(200)
-    .json(data[0])
+    .json(other)
 }
 
 export const logout = (req, res) => {}
