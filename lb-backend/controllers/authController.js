@@ -1,5 +1,6 @@
 import { db } from '../app.js'
 import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 
 export const register = (req, res) => {
   // check existing user
@@ -25,6 +26,24 @@ export const register = (req, res) => {
   })
 }
 
-export const login = (req, res) => {}
+export const login = (req, res) => {
+  //check user if user exist
+  const q = "SELECT * FROM users WHERE username = ?";
+
+  db.query(q, [req, body, username], (err, data) => {
+    //if err
+    if (err) return res.json(err)
+    //show errow message if user does not exist
+    if (data.length === 0) return.statu(404).json("User not found!")
+
+    //if user exist -- check password
+    //-- by default "data" - give us an array
+    //-- we only need the data[0] -- which is user
+    const isPasswordCorrect = bcrypt.compareSync(req.body.password, data[0].password)
+
+    if(!isPasswordCorrect) return res.status(400).json("Wrong username or password")
+  })
+
+}
 
 export const logout = (req, res) => {}
