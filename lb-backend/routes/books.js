@@ -5,7 +5,7 @@ import {
   getBook,
   getBooks,
   updateBook,
-} from '../controllers/bookController'
+} from '../controllers/bookController.js'
 
 const router = express.Router()
 
