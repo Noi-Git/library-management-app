@@ -47,6 +47,7 @@ export const deleteBook = (req, res) => {
     const q = 'DELETE FROM books WHERE `book_id` = ? AND `user_id` = ?'
 
     db.query(q, [bookId, userInfo.user_id], (err, data) => {
+      //this doesn't block you from deleting the book
       if (err) return res.status(403).json('You can delete only your post!')
 
       return res.json('Post has been deleted!')
