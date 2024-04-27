@@ -18,7 +18,7 @@ const BookItem = ({ children, book }) => {
         <div className='card p-3 rounded'>
           <img
             className='card-img-top mx-auto'
-            src={book?.book_image_url}
+            src={book_image_url}
             alt={book?.book_title}
           />
           <span className='text-center'>{genre_name}</span>
