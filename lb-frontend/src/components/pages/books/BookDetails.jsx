@@ -1,11 +1,14 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useGetBookQuery } from '../../../redux/api/booksApi'
+import useErrorMessage from '../../hooks/useErrorMessage'
 
 const BookDetails = () => {
   const params = useParams()
+  const { data } = useErrorMessage(useGetBookQuery(params?.id))
+  console.log('data---:', data)
 
-  const { data } = useGetBookQuery(params?.id)
+  // const { data } = useGetBookQuery(params?.id)
 
   return (
     <>
