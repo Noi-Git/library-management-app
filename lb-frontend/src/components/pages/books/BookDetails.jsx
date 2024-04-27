@@ -1,9 +1,11 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 import { useGetBookDetailsQuery } from '../../../redux/api/booksApi'
 
 const BookDetails = () => {
-  //use the useGetBookDetailsQuery() to import data
-  const { data } = useGetBookDetailsQuery()
+  const params = useParams()
+
+  const { data } = useGetBookDetailsQuery(params?.id)
   return (
     <div className='row d-flex justify-content-around'>
       <div className='col-12 col-lg-5 img-fluid' id='product_image'>
