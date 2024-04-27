@@ -1,14 +1,11 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useGetBookQuery } from '../../../redux/api/booksApi'
 
 const BookDetails = () => {
   const params = useParams()
 
   const { data } = useGetBookQuery(params?.id)
-  console.log(useGetBookQuery(params?.id))
-  const { book_id, book_title, book_description, book_image_url, book_genre } =
-    data
 
   return (
     <>
@@ -16,27 +13,27 @@ const BookDetails = () => {
         <div className='col-12 col-lg-5 img-fluid' id='product_image'>
           <div className='p-3'>
             <img
-              className='d-block w-100'
-              src={book_image_url}
+              className='d-block w-100 '
+              src={data.book_image_url}
               alt=''
               width='340'
-              height='390'
+              height='480'
             />
           </div>
-          <p className='genre text-center'>book_genre</p>
+          <p className='genre text-center'>data.book_genre</p>
         </div>
 
         <div className='col-12 col-lg-5 mt-5'>
-          <h3>{book_title}</h3>
+          <h3>{data.book_title}</h3>
 
-          <p className='author-name'>author name</p>
+          <p className='author-name'>data.author_name</p>
           <hr />
 
           <h4 className='mt-2'>Description:</h4>
-          <p>{book_description}</p>
+          <p>{data.book_description}</p>
           <hr />
           <p id='product_seller mb-3'>
-            Available copy: <strong>10</strong>
+            Available copy: <strong>{data.total_copies}</strong>
           </p>
           <button
             type='button'
