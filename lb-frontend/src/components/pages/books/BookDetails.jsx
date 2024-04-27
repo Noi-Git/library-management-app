@@ -2,6 +2,7 @@ import React from 'react'
 import { useGetBookDetailsQuery } from '../../../redux/api/booksApi'
 
 const BookDetails = () => {
+  //use the useGetBookDetailsQuery() to import data
   const { data } = useGetBookDetailsQuery()
   return (
     <div className='row d-flex justify-content-around'>
