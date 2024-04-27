@@ -33,7 +33,11 @@ const BookItem = ({ children, book }) => {
           <span className='pb-2'>
             {author_firstname} {author_middlename} {author_lastname}
           </span>
-          <Link to='' id='view_btn' className='btn btn-block'>
+          <Link
+            to={`/book/${book?.book_id}`}
+            id='view_btn'
+            className='btn btn-block'
+          >
             View Details
           </Link>
         </div>
