@@ -8,6 +8,7 @@ import Footer from './components/layout/Footer'
 import { Toaster } from 'react-hot-toast'
 import './test.scss'
 import './App.css'
+import BookDetails from './components/pages/books/BookDetails'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/book/:id' element={<BookDetails />} />
         </Routes>
       </Container>
       <Footer />
