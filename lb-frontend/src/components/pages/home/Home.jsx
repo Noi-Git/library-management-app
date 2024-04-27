@@ -27,7 +27,7 @@ const Home = () => {
                   />
                   <div className='card-body ps-3 d-flex justify-content-center flex-column'>
                     <h5 className='card-title'>
-                      <a href=''>Book Title</a>
+                      <p>Book Title</p>
                     </h5>
                     <div className='ratings mt-auto d-flex'>
                       <div className='star-ratings'>
