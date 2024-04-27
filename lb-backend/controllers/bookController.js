@@ -65,7 +65,7 @@ export const deleteBook = (req, res) => {
     if (err) return res.status(403).json('Token is not valid!')
 
     //if the token valid - delete the item
-    const bookId = req.param.id
+    const bookId = req.params.id
     //`user_id` -- comes from userInfo
     const q = 'DELETE FROM books WHERE `book_id` = ? AND `user_id` = ?'
 
@@ -87,7 +87,7 @@ export const updateBook = (req, res) => {
 
     const bookId = req.param.book_id
     const q =
-      'UPDATE books SET `book_title`=?, `book_description`=?, `book_image_url`=?, `genre`=?, `author_name`=?, `total_copies`=? WHERE `book_id`=? AND `user_id`=?'
+      'UPDATE books SET `book_title`=?, `book_description`=?, `book_image_url`=?, `genre`=?, `author_name`=?, `total_copies`=? WHERE `book_id`=? AND user_id=?'
 
     const values = [
       req.body.book_title,
