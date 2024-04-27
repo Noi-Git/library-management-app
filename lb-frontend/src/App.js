@@ -18,9 +18,9 @@ function App() {
       <Container className='container'>
         <Routes>
           <Route exact path='/' element={<Home />} />
+          <Route path='/book/:id' element={<BookDetails />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/book/:id' element={<BookDetails />} />
         </Routes>
       </Container>
       <Footer />
