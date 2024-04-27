@@ -56,12 +56,18 @@ nav {
   padding: 1rem;
 }
 
-#login_btn,
+.login_btn{
+  background-color: #df8f2d;
+  color: white;
+  font-size: 1.2rem;
+}
+
 #view_btn,
 #new_review_btn {
-  background-color: #fa9c23;
+  border: 1px solid #df8f2d;
+  color: #df8f2d;
   padding: 0.4rem 1.8rem;
-  color: white;
+  font-size: 1.2rem;
 }
 
 #cart {
@@ -148,7 +154,7 @@ footer {
 #cart_btn,
 #review_btn {
   border-radius: 2rem;
-  background-color: #fa9c23;
+  background-color: #b1b134;
   border: none;
   padding: 0.5rem 2rem;
 }
