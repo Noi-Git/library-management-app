@@ -9,7 +9,8 @@ $theme-colors: (
   
 .app-bg {
   background-color: rgb(228, 238, 243);
-  height: 100vh;
+  // height: 100vh;
+  // position: relative;
 }
 
 // === Navigation ===
@@ -45,9 +46,6 @@ $theme-colors: (
     width: 10rem; 
   }
 }
-.book-logo {
-  width:90px;
-}
 .shopping-cart {
   width: 40px;
 }
@@ -63,15 +61,21 @@ $theme-colors: (
   margin-left: 80%;
 }
 
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  background-color: rgb(66, 66, 66);
-  color: rgb(205, 210, 210);
-  // margin-top: 20px;
+.title {
+  font-size: 1rem;
+  font-weight: bold;
 }
-
-
-
+.buttons {
+  background-color:rgb(68, 122, 177);
+  color: white;
+  cursor: pointer;
+}
+.read-more {
+  // background-color: rgb(250, 227, 183);
+  margin-left: 6px;
+  padding: 0 3px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
