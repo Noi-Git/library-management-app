@@ -9,7 +9,7 @@ export const booksApi = createApi({
     getBooks: builder.query({
       query: (params) => '/books', //fetch from books endpoint
     }),
-    getBookDetails: builder.query({
+    getBook: builder.query({
       query: (id) => `/books/${id}`, //fetch from books endpoint
     }),
   }),
@@ -18,4 +18,4 @@ export const booksApi = createApi({
 //{useGetBooksQuery}
 //-- is hook that give us all product
 //-- including Loading, Success, Error
-export const { useGetBooksQuery, useGetBookDetailsQuery } = booksApi
+export const { useGetBooksQuery, useGetBookQuery } = booksApi
