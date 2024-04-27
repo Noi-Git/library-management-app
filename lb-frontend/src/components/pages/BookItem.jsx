@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-// import default_product from '../../assets/images/default_product.png'
 
 const BookItem = ({ children, book }) => {
   const {
@@ -17,12 +16,18 @@ const BookItem = ({ children, book }) => {
     <>
       <div className='col-sm-12 col-md-6 col-lg-3 my-3' key={book_id}>
         <div className='card p-3 rounded'>
-          <img className='card-img-top mx-auto' src={book_image_url} alt='' />
+          <img
+            className='card-img-top mx-auto'
+            src={book?.book_image_url}
+            alt={book?.book_title}
+          />
           <span className='text-center'>{genre_name}</span>
           <div className='card-body d-flex flex-column'>
             <h5 className='card-title'>
-              {book_title.slice(0, elipsis)}
-              {book_title.length > elipsis ? '...' : ''}
+              <Link to={`/book/${book?.book_id}`}>
+                {book?.book_title.slice(0, elipsis)}
+                {book_title.length > elipsis ? '...' : ''}
+              </Link>
             </h5>
           </div>
           <span className='pb-2'>
