@@ -23,13 +23,16 @@ const BookDetails = () => {
               height='480'
             />
           </div>
-          <p className='genre text-center'>data.book_genre</p>
+          <p className='genre text-center'>{data.genre_name}</p>
         </div>
 
         <div className='col-12 col-lg-5 mt-5'>
           <h3>{data.book_title}</h3>
 
-          <p className='author-name'>data.author_name</p>
+          <p className='author-name'>
+            {data.author_firstname} {data.author_middlename}{' '}
+            {data.author_lastname}
+          </p>
           <hr />
 
           <h4 className='mt-2'>Description:</h4>
