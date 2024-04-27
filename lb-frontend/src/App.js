@@ -5,12 +5,14 @@ import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
+import { Toaster } from 'react-hot-toast'
 import './test.scss'
 import './App.css'
 
 function App() {
   return (
     <div className='app-bg'>
+      <Toaster position='top-center' />
       <Header />
       <Container className='container'>
         <Routes>

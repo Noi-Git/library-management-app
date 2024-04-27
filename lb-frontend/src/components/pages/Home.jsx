@@ -1,10 +1,12 @@
 import MetaData from '../layout/MetaData'
 import { useGetBooksQuery } from '../../redux/api/booksApi'
 import BookItem from './BookItem'
+import Loader from '../layout/Loader'
 
 const Home = () => {
   const { data, isLoading } = useGetBooksQuery()
-  console.log(data, isLoading)
+
+  if (isLoading) return <Loader />
 
   return (
     <>
