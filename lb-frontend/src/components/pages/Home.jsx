@@ -1,10 +1,19 @@
 import MetaData from '../layout/MetaData'
 import { useGetBooksQuery } from '../../redux/api/booksApi'
-import BookItem from './BookItem'
+import BookItem from './books/BookItem'
 import Loader from '../layout/Loader'
+import { useEffect } from 'react'
+import toast from 'react-hot-toast'
 
 const Home = () => {
-  const { data, isLoading } = useGetBooksQuery()
+  const { data, isLoading, error, isError } = useGetBooksQuery()
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(error?.data?.message)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isError])
 
   if (isLoading) return <Loader />
 
