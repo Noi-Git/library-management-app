@@ -121,9 +121,15 @@ nav {
   color: #fdcc0d;
 }
 
-#no_of_reviews {
-  font-size: 0.9rem;
+.author-name {
+  font-size: 1.1rem;
   color: grey;
+  font-weight: 400;
+}
+.genre {
+  font-size: 1.1rem;
+  color: grey;
+  font-weight: 500;
 }
 
 .App {
