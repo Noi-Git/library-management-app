@@ -9,5 +9,5 @@ export const store = configureStore({
     [booksApi.reducerPath]: booksApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(booksApi.middleware),
+    getDefaultMiddleware().concat([booksApi.middleware]),
 })

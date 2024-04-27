@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Container, Button, Form, Row, Col } from 'react-bootstrap'
 import reading from '../../assets/images/reading1x.png'
 // import {
@@ -70,9 +70,10 @@ const Login = () => {
                 Submit
               </Button>
 
-              <Form.Group className='mt-3'>
-                <Form.Label>Don't have an account .. register ..</Form.Label>
-              </Form.Group>
+              {/* <Form.Group className='mt-3'>
+              <Form.Label >Don't have an account .. register ..</Form.Label>
+              </Form.Group> */}
+              <Link to={'/register'}>Don't have an account .. register ..</Link>
             </Form>
           </Col>
         </Row>

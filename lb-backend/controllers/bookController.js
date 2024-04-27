@@ -2,9 +2,12 @@ import { db } from '../app.js'
 import jwt from 'jsonwebtoken'
 
 export const getBooks = (req, res) => {
+  // const q = req.query.genre_id
+  //   ? 'SELECT * FROM books WHERE genre_id=?'
+  //   : 'SELECT * FROM books'
   const q = req.query.genre_id
     ? 'SELECT * FROM books WHERE genre_id=?'
-    : 'SELECT * FROM books'
+    : 'SELECT book_id, book_title, book_description, book_image_url, total_copies, author_firstname, author_lastname, author_middlename, genre_name FROM books INNER JOIN authors ON books.author_id = authors.author_id INNER JOIN genre ON books.genre_id = genre.genre_id'
 
   db.query(q, [req.query.genre_id], (err, data) => {
     if (err) return res.status(500).send(err)
@@ -14,10 +17,12 @@ export const getBooks = (req, res) => {
 }
 
 export const getBook = (req, res) => {
-  res.json('from book controller')
+  // res.json('from book controller')
   // const q =
   //   'SELECT `user_firstname`, `user_lastname`, `book_title`, `book_description`, `book_image_url`, FROM users u JOIN books b ON u.user_id = b.book_id WHERE b.book_id = ?'
-  const q = 'SELECT * FROM books WHERE book_id = ?'
+  // const q = 'SELECT * FROM books'
+  const q =
+    'SELECT book_id, book_title, book_description, book_image_url, total_copies, author_firstname, author_lastname, author_middlename, genre_name FROM books INNER JOIN authors ON books.author_id = authors.author_id INNER JOIN genre ON books.genre_id = genre.genre_id'
 
   db.query(q, [req.params.id], (err, data) => {
     if (err) return res.status(500).json(err)
@@ -65,7 +70,7 @@ export const deleteBook = (req, res) => {
     if (err) return res.status(403).json('Token is not valid!')
 
     //if the token valid - delete the item
-    const bookId = req.param.id
+    const bookId = req.params.id
     //`user_id` -- comes from userInfo
     const q = 'DELETE FROM books WHERE `book_id` = ? AND `user_id` = ?'
 
@@ -87,7 +92,7 @@ export const updateBook = (req, res) => {
 
     const bookId = req.param.book_id
     const q =
-      'UPDATE books SET `book_title`=?, `book_description`=?, `book_image_url`=?, `genre`=?, `author_name`=?, `total_copies`=? WHERE `book_id`=? AND `user_id`=?'
+      'UPDATE books SET `book_title`=?, `book_description`=?, `book_image_url`=?, `genre`=?, `author_name`=?, `total_copies`=? WHERE `book_id`=? AND user_id=?'
 
     const values = [
       req.body.book_title,

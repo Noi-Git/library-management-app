@@ -93,7 +93,7 @@ const Header = () => {
           </div> */}
         </div>
 
-        <a href='/login' className='btn ms-4' id='login_btn'>
+        <a href='/login' className='btn ms-4 login_btn'>
           {' '}
           Login{' '}
         </a>
