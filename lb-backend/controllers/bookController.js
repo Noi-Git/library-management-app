@@ -2,9 +2,12 @@ import { db } from '../app.js'
 import jwt from 'jsonwebtoken'
 
 export const getBooks = (req, res) => {
+  // const q = req.query.genre_id
+  //   ? 'SELECT * FROM books WHERE genre_id=?'
+  //   : 'SELECT * FROM books'
   const q = req.query.genre_id
     ? 'SELECT * FROM books WHERE genre_id=?'
-    : 'SELECT * FROM books'
+    : 'SELECT book_id, book_title, book_description, book_image_url, total_copies, author_firstname, author_lastname, author_middlename, genre_name FROM books INNER JOIN authors ON books.author_id = authors.author_id INNER JOIN genre ON books.genre_id = genre.genre_id'
 
   db.query(q, [req.query.genre_id], (err, data) => {
     if (err) return res.status(500).send(err)
