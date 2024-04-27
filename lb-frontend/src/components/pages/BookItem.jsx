@@ -24,7 +24,7 @@ const BookItem = ({ children, book }) => {
           <span id='no_of_reviews' class='pt-2 ps-2'>
             {author_id}
           </span>
-          <Link href='' id='view_btn' class='btn btn-block'>
+          <Link to='' id='view_btn' class='btn btn-block'>
             View Details
           </Link>
         </div>

@@ -1,7 +1,6 @@
 import MetaData from '../layout/MetaData'
 import { useGetBooksQuery } from '../../redux/api/booksApi'
 import BookItem from './BookItem'
-import Card from 'react-bootstrap/Card'
 
 const Home = () => {
   const { data, isLoading } = useGetBooksQuery()
