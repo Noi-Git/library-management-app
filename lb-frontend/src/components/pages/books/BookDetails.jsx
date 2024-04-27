@@ -18,7 +18,7 @@ const BookDetails = () => {
             <img
               className='d-block w-100 '
               src={data.book_image_url}
-              alt=''
+              alt={data.book_title}
               width='340'
               height='480'
             />
@@ -38,7 +38,11 @@ const BookDetails = () => {
           <h4 className='mt-2'>Description:</h4>
           <p>{data.book_description}</p>
           <hr />
-          <p id='product_seller mb-3'>
+          {/* <p id='product_seller mb-3'> */}
+          <p
+            id='stock_status'
+            className={data.total_copies > 0 ? 'greenColor' : 'red'}
+          >
             Available copy: <strong>{data.total_copies}</strong>
           </p>
           <button
