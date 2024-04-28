@@ -5,10 +5,10 @@ import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
+import BookDetails from './components/pages/books/BookDetails'
 import { Toaster } from 'react-hot-toast'
 import './test.scss'
 import './App.css'
-import BookDetails from './components/pages/books/BookDetails'
 
 function App() {
   return (
