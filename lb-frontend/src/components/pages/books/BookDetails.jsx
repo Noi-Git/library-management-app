@@ -5,10 +5,19 @@ import useErrorMessage from '../../hooks/useErrorMessage'
 
 const BookDetails = () => {
   const params = useParams()
-  const { data } = useErrorMessage(useGetBookQuery(params?.id))
-  console.log('data---:', data)
+  const { data: singleBookData } = useErrorMessage(useGetBookQuery(params?.id))
+  console.log('data--- array:', singleBookData)
 
-  // const { data } = useGetBookQuery(params?.id)
+  const {
+    book_image_url,
+    book_title,
+    book_description,
+    author_firstname,
+    author_lastname,
+    author_middlename,
+    genre_name,
+    total_copies,
+  } = singleBookData
 
   return (
     <>
@@ -17,33 +26,30 @@ const BookDetails = () => {
           <div className='p-3'>
             <img
               className='d-block w-100 '
-              src={data.book_image_url}
-              alt={data.book_title}
+              src={book_image_url}
+              alt={book_title}
               width='340'
               height='480'
             />
           </div>
-          <p className='genre text-center'>{data.genre_name}</p>
+          <p className='genre text-center'>{genre_name}</p>
         </div>
-
         <div className='col-12 col-lg-5 mt-5'>
-          <h3>{data.book_title}</h3>
+          <h3>{book_title}</h3>
 
           <p className='author-name'>
-            {data.author_firstname} {data.author_middlename}{' '}
-            {data.author_lastname}
+            {author_firstname} {author_middlename} {author_lastname}
           </p>
           <hr />
 
           <h4 className='mt-2'>Description:</h4>
-          <p>{data.book_description}</p>
+          <p>{book_description}</p>
           <hr />
-          {/* <p id='product_seller mb-3'> */}
           <p
             id='stock_status'
-            className={data.total_copies > 0 ? 'greenColor' : 'red'}
+            className={total_copies > 0 ? 'greenColor' : 'red'}
           >
-            Available copy: <strong>{data.total_copies}</strong>
+            Available copy: <strong>{total_copies}</strong>
           </p>
           <button
             type='button'

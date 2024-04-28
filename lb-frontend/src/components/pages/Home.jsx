@@ -7,7 +7,7 @@ import BookItem from './books/BookItem'
 import useErrorMessage from '../hooks/useErrorMessage'
 
 const Home = () => {
-  const { data } = useErrorMessage(useGetBooksQuery())
+  const { data: allBookData } = useErrorMessage(useGetBooksQuery())
   // const { data, isLoading, error, isError } = useGetBooksQuery()
 
   // useEffect(() => {
@@ -30,7 +30,7 @@ const Home = () => {
 
           <section id='products' class='mt-5'>
             <div class='row'>
-              {data?.map((book) => (
+              {allBookData?.map((book) => (
                 <BookItem book={book} />
               ))}
             </div>
