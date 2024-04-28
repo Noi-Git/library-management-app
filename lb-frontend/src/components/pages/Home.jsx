@@ -2,7 +2,6 @@ import MetaData from '../layout/MetaData'
 import { useGetBooksQuery } from '../../redux/api/booksApi'
 import BookItem from './books/BookItem'
 import Loader from '../layout/Loader'
-import { useEffect } from 'react'
 import toast from 'react-hot-toast'
 import CustomPagination from '../layout/CustomPagination'
 
