@@ -1,24 +1,17 @@
 import MetaData from '../layout/MetaData'
 import { useGetBooksQuery } from '../../redux/api/booksApi'
 import BookItem from './books/BookItem'
-// import Loader from '../layout/Loader'
-// import { useEffect } from 'react'
-// import toast from 'react-hot-toast'
-import useErrorMessage from '../hooks/useErrorMessage'
+import Loader from '../layout/Loader'
+import { useEffect } from 'react'
+import toast from 'react-hot-toast'
 import CustomPagination from '../layout/CustomPagination'
 
 const Home = () => {
-  const { data: allBookData } = useErrorMessage(useGetBooksQuery())
-  // const { data, isLoading, error, isError } = useGetBooksQuery()
+  const { data, isLoading, error, isError } = useGetBooksQuery()
+  console.log('from home---', data)
 
-  // useEffect(() => {
-  //   if (isError) {
-  //     toast.error(error?.data?.message)
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [isError])
-
-  // if (isLoading) return <Loader />
+  if (isLoading) return <Loader />
+  if (isError) return toast.error(error?.data?.message)
 
   return (
     <>
@@ -31,15 +24,15 @@ const Home = () => {
 
           <section id='products' class='mt-5'>
             <div class='row'>
-              {allBookData?.map((book) => (
+              {data?.map((book) => (
                 <BookItem book={book} />
               ))}
             </div>
           </section>
         </div>
         <CustomPagination
-          resPerPage={allBookData?.resPerPage}
-          filteredBooksCount={allBookData?.filteredBooksCount}
+          resPerPage={data?.resPerPage}
+          filteredBooksCount={data?.filteredBooksCount}
         />
       </div>
     </>
