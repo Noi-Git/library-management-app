@@ -7,7 +7,7 @@ export const booksApi = createApi({
   endpoints: (builder) => ({
     //this is our first endpoint
     getBooks: builder.query({
-      query: (params) => '/books', //fetch from books endpoint
+      query: () => '/books', //fetch from books endpoint
     }),
     getBook: builder.query({
       query: (id) => `/books/${id}`, //fetch from books endpoint
