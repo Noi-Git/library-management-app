@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import Pagination from 'react-js-pagination'
 
 const CustomPagination = ({ resPerPage, filteredBooksCount }) => {
   const [currentPage, setCurrentPage] = useState()
+
   let [searchParams] = useSearchParams()
+  const navigate = useNavigate()
 
   const page = Number(searchParams.get('page')) || 1 //get page number from query
 
@@ -22,7 +24,8 @@ const CustomPagination = ({ resPerPage, filteredBooksCount }) => {
     }
 
     const path = window.location.pathname + '?' + searchParams.toString()
-    alert(path)
+    // alert(path)
+    navigate(path)
 
     return (
       <div className='d-flex justify-conten-center my-5'>
