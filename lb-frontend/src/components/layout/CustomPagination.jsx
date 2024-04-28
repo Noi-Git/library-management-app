@@ -15,7 +15,7 @@ const CustomPagination = ({ resPerPage, filteredBooksCount }) => {
   const setCurrentPageNumber = () => {}
 
   return (
-    <>
+    <div className='d-flex justify-conten-center my-5'>
       {filteredBooksCount > resPerPage && (
         <Pagination
           activePage={currentPage}
@@ -26,9 +26,11 @@ const CustomPagination = ({ resPerPage, filteredBooksCount }) => {
           prevPageText={'Prev'}
           firstPageText={'First'}
           lastPageText={'Last'}
+          itemClass='page-item'
+          linkClass='page-link'
         />
       )}
-    </>
+    </div>
   )
 }
 
