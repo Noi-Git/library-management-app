@@ -12,26 +12,37 @@ const CustomPagination = ({ resPerPage, filteredBooksCount }) => {
     setCurrentPage(page)
   }, [page])
 
-  const setCurrentPageNumber = () => {}
+  const setCurrentPageNumber = (pageNumber) => {
+    setCurrentPage(pageNumber)
 
-  return (
-    <div className='d-flex justify-conten-center my-5'>
-      {filteredBooksCount > resPerPage && (
-        <Pagination
-          activePage={currentPage}
-          itemsCountPerPage={resPerPage}
-          totalItemsCount={filteredBooksCount}
-          onChange={setCurrentPageNumber}
-          nextPageText={'Next'}
-          prevPageText={'Prev'}
-          firstPageText={'First'}
-          lastPageText={'Last'}
-          itemClass='page-item'
-          linkClass='page-link'
-        />
-      )}
-    </div>
-  )
+    if (searchParams.has('page')) {
+      searchParams.set('page', pageNumber)
+    } else {
+      searchParams.append('page', pageNumber)
+    }
+
+    const path = window.location.pathname + '?' + searchParams.toString()
+    alert(path)
+
+    return (
+      <div className='d-flex justify-conten-center my-5'>
+        {filteredBooksCount > resPerPage && (
+          <Pagination
+            activePage={currentPage}
+            itemsCountPerPage={resPerPage}
+            totalItemsCount={filteredBooksCount}
+            onChange={setCurrentPageNumber}
+            nextPageText={'Next'}
+            prevPageText={'Prev'}
+            firstPageText={'First'}
+            lastPageText={'Last'}
+            itemClass='page-item'
+            linkClass='page-link'
+          />
+        )}
+      </div>
+    )
+  }
 }
 
 export default CustomPagination
