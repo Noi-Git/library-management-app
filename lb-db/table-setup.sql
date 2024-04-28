@@ -83,6 +83,38 @@ CREATE TABLE returns (
   deketed_at TIMESTAMP DEFAULT NOW()
 );
 
+ALTER TABLE books ADD p_id INT;
+
+ALTER TABLE books 
+ADD CONSTRAINT p_id FOREIGN KEY (p_id) REFERENCES pagination(p_id);
+
+-- Create pagination 
+CREATE TABLE pagination (
+  p_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  page_size INT,
+  page_index INT,
+  skip_records INT
+);
+
+INSERT INTO pagination (page_size, page_index, skip_records)
+VALUEs (10, 2, page_size * (page_index - 1));
+
+
+SELECT book_id, book_title, book_description, book_image_url, total_copies, author_firstname, author_lastname, author_middlename, genre_name, page_index, page_size
+FROM books
+INNER JOIN authors ON books.author_id = authors.author_id
+INNER JOIN genre ON books.genre_id = genre.genre_id
+INNER JOIN pagination ON books.p_id = pagination.p_id;
+
+SELECT page_size, page_index, COUNT(*) AS TotalCount, CEIL(COUNT(*) / page_size) AS TotalPage
+FROM books;
+
+
+
+
+
+
+
 
 
 
