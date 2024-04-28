@@ -5,6 +5,7 @@ import BookItem from './books/BookItem'
 // import { useEffect } from 'react'
 // import toast from 'react-hot-toast'
 import useErrorMessage from '../hooks/useErrorMessage'
+import CustomPagination from '../layout/CustomPagination'
 
 const Home = () => {
   const { data: allBookData } = useErrorMessage(useGetBooksQuery())
@@ -36,6 +37,10 @@ const Home = () => {
             </div>
           </section>
         </div>
+        <CustomPagination
+          resPerPage={allBookData?.resPerPage}
+          filteredBooksCount={allBookData?.filteredBooksCount}
+        />
       </div>
     </>
   )
