@@ -7,9 +7,10 @@ const Navigation = () => {
     <Navbar expand='lg' className='nav-bg'>
       <Container>
         <Navbar.Brand href='#home'>
-          <Link to={'/'}>
-            <h1 className='logo'> Noi's Library</h1>
-          </Link>
+          <h1 className='logo'>
+            {' '}
+            <Link to={'/'}>Noi's Library</Link>
+          </h1>
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
