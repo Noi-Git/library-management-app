@@ -1,11 +1,23 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Search = () => {
   const [keyword, setKeyword] = useState('')
+  const navigate = useNavigate()
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+
+    if (keyword?.trim()) {
+      navigate(`/?keyword=${keyword}`)
+    } else {
+      navigate(`/`)
+    }
+  }
 
   return (
     <>
-      <form action='your_search_action_url_here' method='get'>
+      <form onSubmit={submitHandler}>
         <div className='input-group'>
           <input
             type='text'
