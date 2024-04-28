@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import avatar from '../../assets/images/profile.png'
 import cart from '../../assets/images/shopping_cart.png'
 import Search from './Search'
@@ -7,7 +8,12 @@ const Header = () => {
     <nav className='nav navbar row'>
       <div className='col-12 col-md-3 ps-5'>
         <div className='navbar-brand'>
-          <h1 className='logo'> Noi's Library App</h1>
+          <h1 className='logo'>
+            <Link to='/' className='logo'>
+              {' '}
+              Noi's Library App
+            </Link>
+          </h1>
         </div>
       </div>
       <div className='col-12 col-md-6 mt-2 mt-md-0'>
