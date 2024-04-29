@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { FaSearch } from 'react-icons/fa'
 
 const Search = () => {
   const [keyword, setKeyword] = useState('')
@@ -30,7 +31,7 @@ const Search = () => {
             onChange={(e) => setKeyword(e.target.value)}
           />
           <button id='search_btn' className='btn' type='submit'>
-            <i className='fa fa-search' aria-hidden='true'></i>
+            <FaSearch aria-hidden='true' />
           </button>
         </div>
       </form>
