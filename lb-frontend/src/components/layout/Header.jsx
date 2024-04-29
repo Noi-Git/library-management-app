@@ -60,29 +60,6 @@ const Header = () => {
               Logout
             </a>
           </div>
-          {/* <div
-            className='dropdown-menu w-100'
-            aria-labelledby='dropDownMenuButton'
-          >
-            <a className='dropdown-item' href='/admin/dashboard'>
-              Dashboard{' '}
-            </a>
-
-            <a className='dropdown-item' href='/me/orders'>
-              {' '}
-              Orders{' '}
-            </a>
-
-            <a className='dropdown-item' href='/me/profile'>
-              {' '}
-              Profile{' '}
-            </a>
-
-            <a className='dropdown-item text-danger' href='/'>
-              {' '}
-              Logout{' '}
-            </a>
-          </div> */}
         </div>
 
         <a href='/login' className='btn ms-4 login_btn'>
