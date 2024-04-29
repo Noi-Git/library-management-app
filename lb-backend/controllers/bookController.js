@@ -16,18 +16,19 @@ export const getBooks = (req, res) => {
   })
 }
 
-export const getBook = (req, res) => {
-  // res.json('from book controller')
-  // const q =
-  //   'SELECT `user_firstname`, `user_lastname`, `book_title`, `book_description`, `book_image_url`, FROM users u JOIN books b ON u.user_id = b.book_id WHERE b.book_id = ?'
-  // const q = 'SELECT * FROM books'
+export const getBookById = (req, res) => {
   const q =
-    'SELECT book_id, book_title, book_description, book_image_url, total_copies, author_firstname, author_lastname, author_middlename, genre_name FROM books INNER JOIN authors ON books.author_id = authors.author_id INNER JOIN genre ON books.genre_id = genre.genre_id'
+    'SELECT book_id, book_title, book_description, book_image_url, total_copies, author_firstname, author_lastname, author_middlename, genre_name FROM books INNER JOIN authors ON books.author_id = authors.author_id INNER JOIN genre ON books.genre_id = genre.genre_id WHERE book_id=?'
 
-  db.query(q, [req.params.id], (err, data) => {
+  const book = db.query(q, [req.params.id], (err, data) => {
     if (err) return res.status(500).json(err)
+    const book = res.send({
+      _sql: q,
+      _values: req.params.id,
+      results: data,
+    })
 
-    return res.status(200).json(data[0])
+    return book
   })
 }
 

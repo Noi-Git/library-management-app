@@ -2,7 +2,7 @@ import express from 'express'
 import {
   addBook,
   deleteBook,
-  getBook,
+  getBookById,
   getBooks,
   updateBook,
 } from '../controllers/bookController.js'
@@ -10,7 +10,7 @@ import {
 const bookRouter = express.Router()
 
 bookRouter.get('/', getBooks)
-bookRouter.get('/:id', getBook)
+bookRouter.get('/:id', getBookById)
 bookRouter.post('/', addBook)
 bookRouter.delete('/:id', deleteBook)
 bookRouter.put('/:id', updateBook)
