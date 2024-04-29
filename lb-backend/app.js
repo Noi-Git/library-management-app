@@ -9,6 +9,7 @@ import cookieParser from 'cookie-parser'
 import authRouter from './routes/auths.js'
 import bookRouter from './routes/books.js'
 import userRouter from './routes/users.js'
+import searchRouter from './routes/search.js'
 
 const app = express()
 const { __dirname } = getGlobals(import.meta.url)
@@ -23,12 +24,15 @@ export const db = mysql.createConnection({
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_NAME,
+  // waitForConnection: true,
+  // queueLimit: 0,
 })
 
 //register route
 app.use('/api/v1/auths', authRouter)
 app.use('/api/v1/books', bookRouter)
 app.use('/api/v1/users', userRouter)
+app.use('/api/v1/search', searchRouter)
 
 app.listen(process.env.PORT, () => {
   console.log(

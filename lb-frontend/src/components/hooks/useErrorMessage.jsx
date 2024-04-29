@@ -11,7 +11,7 @@ const useErrorMessage = (apiEndpoint) => {
       toast.error(error?.data?.message)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isError])
+  }, [data, isError])
 
   if (isLoading) return <Loader />
 

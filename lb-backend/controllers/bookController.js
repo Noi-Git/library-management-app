@@ -24,10 +24,10 @@ export const getBook = (req, res) => {
   const q =
     'SELECT book_id, book_title, book_description, book_image_url, total_copies, author_firstname, author_lastname, author_middlename, genre_name FROM books INNER JOIN authors ON books.author_id = authors.author_id INNER JOIN genre ON books.genre_id = genre.genre_id'
 
-  db.query(q, [req.params.id], (err, data) => {
+  db.query(q, (err, data) => {
     if (err) return res.status(500).json(err)
 
-    return res.status(200).json(data[0])
+    return res.status(200).json(data)
   })
 }
 
