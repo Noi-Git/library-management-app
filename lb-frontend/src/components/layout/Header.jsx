@@ -1,31 +1,20 @@
+import { Link } from 'react-router-dom'
 import avatar from '../../assets/images/profile.png'
 import cart from '../../assets/images/shopping_cart.png'
+import Search from './Search'
 
 const Header = () => {
   return (
     <nav className='nav navbar row'>
       <div className='col-12 col-md-3 ps-5'>
         <div className='navbar-brand'>
-          <h1 className='logo'> Noi's Library App</h1>
+          <Link to={'/'} className='logo'>
+            Noi's Library App
+          </Link>
         </div>
       </div>
       <div className='col-12 col-md-6 mt-2 mt-md-0'>
-        <form action='your_search_action_url_here' method='get'>
-          <div className='input-group'>
-            <input
-              type='text'
-              id='search_field'
-              aria-describedby='search_btn'
-              className='form-control'
-              placeholder='Search books ...'
-              name='keyword'
-              value=''
-            />
-            <button id='search_btn' className='btn' type='submit'>
-              <i className='fa fa-search' aria-hidden='true'></i>
-            </button>
-          </div>
-        </form>
+        <Search />
       </div>
       <div className='col-12 col-md-3 mt-4 mt-md-0 text-center'>
         <a href='/cart' style={{ textDecoration: 'none' }}>
@@ -68,7 +57,7 @@ const Header = () => {
               Logout
             </a>
           </div>
-          {/* <div
+          <div
             className='dropdown-menu w-100'
             aria-labelledby='dropDownMenuButton'
           >
@@ -90,7 +79,7 @@ const Header = () => {
               {' '}
               Logout{' '}
             </a>
-          </div> */}
+          </div>
         </div>
 
         <a href='/login' className='btn ms-4 login_btn'>
