@@ -14,5 +14,6 @@ export const searchTitle = (req, res) => {
       _values: req.query.search_query,
       result: search,
     })
+    console.log('search---', search)
   })
 }
