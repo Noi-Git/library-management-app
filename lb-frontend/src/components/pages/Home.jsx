@@ -15,7 +15,7 @@ const Home = () => {
 
   const { data } = useErrorMessage(useGetBooksQuery(params))
   const { search } = useErrorMessage(useGetBooksByTitleQuery(params))
-  // console.log('data home page--', data)
+  console.log('data home page--', data)
 
   return (
     <>

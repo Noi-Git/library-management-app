@@ -4,6 +4,7 @@ import mysql from 'mysql2'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
+import bodyParser from 'body-parser'
 
 // //=== import all routes ===
 import authRouter from './routes/auths.js'
@@ -18,6 +19,10 @@ dotenv.config({ path: `${__dirname}/config/config.env` })
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors())
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json()) // parse application/json
 
 export const db = mysql.createConnection({
   host: process.env.DATABASE_HOST,

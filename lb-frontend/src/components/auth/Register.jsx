@@ -1,40 +1,65 @@
 import { useState } from 'react'
-// import { auth } from '../firebase/firebase'
-// import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-// import { useNavigate } from 'react-router-dom'
 import { Button, Form, Row, Col } from 'react-bootstrap'
+import {
+  getAuth,
+  isSignInWithEmailLink,
+  signInWithEmailLink,
+} from 'firebase/auth'
 import book from '../../assets/images/book1x.png'
 // import axios from 'axios'
 import MetaData from '../layout/MetaData'
+import { auth } from '../firebase/firebase'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const Register = () => {
   const [email, setEmail] = useState('')
-  // const [error, setError] = useState(null)
-  // console.log('email---', email)
-
-  // const navigate = useNavigate()
-
-  // const handleChange = async (e) => {
-  // setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  // }
-  // console.log(inputs)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    // Confirm the link is a sign-in with email link.
+    const auth = getAuth()
+    if (isSignInWithEmailLink(auth, window.location.href)) {
+      // Additional state parameters can also be passed via URL.
+      // This can be used to continue the user's intended action before triggering
+      // the sign-in operation.
+      // Get the email if available. This should be available if the user completes
+      // the flow on the same device where they started it.
+      let email = window.localStorage.getItem('emailForSignIn')
+      if (!email) {
+        // User opened the link on a different device. To prevent session fixation
+        // attacks, ask the user to provide the associated email again. For example:
+        email = window.prompt('Please provide your email for confirmation')
+      }
+      // The client SDK will parse the code from the link for you.
+      signInWithEmailLink(auth, email, window.location.href)
+        .then((result) => {
+          // Clear email from storage.
+          window.localStorage.removeItem('emailForSignIn')
+          // You can access the new user via result.user
+          // Additional user info profile not available via:
+          // result.additionalUserInfo.profile == null
+          // You can check if the user is new or existing:
+          // result.additionalUserInfo.isNewUser
+        })
+        .catch((error) => {
+          // Some error occurred, you can inspect the code: error.code
+          // Common errors could be invalid email and invalid or expired OTPs.
+        })
+    }
 
     // const config = {
     //   url: 'http://localhost:3000/register/complete',
     //   handleCodeInApp: true,
     // }
-    // await auth.sendSignInLinkToEmail(email, config)
+
+    // await auth.signInWithEmailLink(email, config)
     // toast.success(
-    //   `Email has been sent to ${email} to complete your registration`
+    //   `Email is sent to ${email}. Click the link to complete your registration`
     // )
 
-    // save user email in local storage - this is for auto fill email address after user clicked on the link to complete the registration in the email
-    window.localStorage.setItem('emailForRgistration', email)
-    // clear the email input form after click submit
+    // window.localStorage.setItem('emailForRgistration', email)
     setEmail('')
   }
 
@@ -76,12 +101,6 @@ const Register = () => {
             >
               Register
             </Button>
-            {/* {error && <p>{error}</p>} */}
-            <Form.Group className='mt-3'>
-              <Form.Text className='text-muted'>
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
           </Form>
         </Col>
       </Row>

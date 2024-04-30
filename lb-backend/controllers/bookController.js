@@ -17,8 +17,7 @@ export const getBooks = (req, res) => {
 }
 
 export const getBookById = (req, res) => {
-  const q =
-    'SELECT book_id, book_title, book_description, book_image_url, total_copies, author_firstname, author_lastname, author_middlename, genre_name FROM books INNER JOIN authors ON books.author_id = authors.author_id INNER JOIN genre ON books.genre_id = genre.genre_id WHERE book_id=?'
+  const q = `SELECT book_id, book_title, book_description, book_image_url, total_copies, author_firstname, author_lastname, author_middlename, genre_name FROM books INNER JOIN authors ON books.author_id = authors.author_id INNER JOIN genre ON books.genre_id = genre.genre_id WHERE book_id=?`
 
   db.query(q, [req.params.id], (err, data) => {
     if (err) return res.status(500).json(err)
@@ -33,30 +32,34 @@ export const getBookById = (req, res) => {
 }
 
 export const addBook = (req, res) => {
-  const token = req.cookies.access_token
-  if (!token) return res.status(401).json('Not authenticated!')
+  const book = new Book(req.body)
+  // const post = req.body
+  // then --insert into
 
-  jwt.verify(token, 'jwtkey', (err, userInfo) => {
-    if (err) return res.status(403).json('Token is not valid!')
-
-    const q =
-      'INSERT INTO books(`book_title`, `book_description`, `book_image_url`, `genre`, `author_name`, `total_copies`, `date`) VALUES (?)'
-
-    const values = [
-      req.body.book_title,
-      req.body.book_description,
-      req.body.book_image_url,
-      req.body.genre,
-      req.body.author_name,
-      req.body.date,
-      userInfo.user_id,
-    ]
-
-    db.query(q, [values], (err, data) => {
-      if (err) return res.status(500).json(err)
-      return resjson('Book has been created')
-    })
+  book.save((err, result) => {
+    if (err) throw err
+    return res.json(result)
   })
+
+  // const q =
+  //   'INSERT INTO books(`book_title`, `book_description`, `book_image_url`,  `author_firstname`, `author_middlename`, `author_lastname`,`genre_name`,`total_copies`) VALUES (?)'
+
+  // const values = [
+  //   req.body.book_title,
+  //   req.body.book_description,
+  //   req.body.book_image_url,
+  //   req.body.author_firstname,
+  //   req.body.author_middlename,
+  //   req.body.author_lastname,
+  //   req.body.genre_name,
+  //   req.body.total_copies,
+  //   userInfo.user_id,
+  // ]
+
+  // db.query(q, [values], (err, data) => {
+  //   if (err) return res.status(500).json(err)
+  //   return resjson('Book has been created')
+  // })
 }
 
 export const deleteBook = (req, res) => {
