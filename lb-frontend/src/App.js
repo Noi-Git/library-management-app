@@ -9,6 +9,8 @@ import { Toaster } from 'react-hot-toast'
 import './custom.scss'
 import './App.css'
 import BookDetails from './components/pages/books/BookDetails'
+import AddBook from './components/pages/admin/AddBook'
+import Genre from './components/pages/admin/Genre'
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path='/book/:id' element={<BookDetails />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/add-book' element={<AddBook />} />
+          <Route path='/add-genre' element={<Genre />} />
         </Routes>
       </Container>
       <Footer />
