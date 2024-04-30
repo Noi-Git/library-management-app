@@ -1,41 +1,25 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { auth, provider } from '../firebase/firebase'
+import { signInWithPopup } from 'firebase/auth'
+import { useNavigate } from 'react-router-dom'
 import { Container, Button, Form, Row, Col } from 'react-bootstrap'
 import reading from '../../assets/images/reading1x.png'
-// import {
-//   doSignInWithEmailAndPassword,
-//   doSignInWithGoogle,
-// } from '../firebase/auth'
-// import { useAuth } from '../contexts/authContext'
 import MetaData from '../layout/MetaData'
 
 const Login = () => {
-  // const { userLoggedIn } = useAuth()
+  const navigate = useNavigate()
 
-  // const [email, setEmail] = useState('')
-  // const [password, setPassword] = useState('')
-  // const [isSigningIn, setIsSigningIn] = useState(false)
-  // const [errorMessage, setErrorMessage] = useState('')
-
-  // const onSubmit = async (e) => {
-  //   e.preventDefault()
-
-  //   if (!isSigningIn) {
-  //     setIsSigningIn(true)
-  //     await doSignInWithEmailAndPassword(email, password)
-  //   }
-  // }
-
-  // const onGoogleSignIn = async (e) => {
-  //   e.preventDefault()
-
-  //   if (!isSigningIn) {
-  //     setIsSigningIn(true)
-  //     doSignInWithGoogle().catch((err) => {
-  //       setIsSigningIn(false)
-  //     })
-  //   }
-  // }
+  const singInWithGoogle = async () => {
+    const results = await signInWithPopup(auth, provider)
+    console.log(results)
+    const authInfo = {
+      userID: results.user.uid,
+      name: results.user.displayName,
+      profilePhoto: results.user.photoURL,
+      isAuth: true,
+    }
+    localStorage.setItem('auth', JSON.stringify(authInfo))
+    navigate('/')
+  }
 
   return (
     <>
@@ -54,27 +38,21 @@ const Login = () => {
           </Col>
         </Row>
 
-        <Row className=' form-width'>
+        <Row className=' form-width d-flex justify-content-center'>
           <Col>
-            <Form onSubmit>
-              <Form.Group className='mb-3' controlId='formBasicEmail'>
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type='email' placeholder='Enter email' />
-              </Form.Group>
-
+            <Form>
               <Form.Group className='mb-3' controlId='formBasicPassword'>
-                <Form.Label>Password</Form.Label>
-                <Form.Control type='password' placeholder='Password' />
+                <Form.Label>Sign In With Google to Continue</Form.Label>
               </Form.Group>
-              <Button variant='primary' type='submit'>
-                Submit
-              </Button>
-
-              {/* <Form.Group className='mt-3'>
-              <Form.Label >Don't have an account .. register ..</Form.Label>
-              </Form.Group> */}
-              <Link to={'/register'}>Don't have an account .. register ..</Link>
             </Form>
+            <Button
+              variant='primary'
+              type='submit'
+              className='buttons'
+              onClick={singInWithGoogle}
+            >
+              Sign In With Google Account
+            </Button>
           </Col>
         </Row>
       </Container>
