@@ -6,7 +6,7 @@ import Register from './components/auth/Register'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import { Toaster } from 'react-hot-toast'
-import './test.scss'
+import './custom.scss'
 import './App.css'
 import BookDetails from './components/pages/books/BookDetails'
 
