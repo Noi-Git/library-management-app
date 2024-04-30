@@ -1,23 +1,21 @@
 import MetaData from '../layout/MetaData'
-import { useGetBooksQuery } from '../../redux/api/booksApi'
+import {
+  useGetBooksQuery,
+  useGetBooksByTitleQuery,
+} from '../../redux/api/booksApi'
 import BookItem from './books/BookItem'
-// import Loader from '../layout/Loader'
-// import { useEffect } from 'react'
-// import toast from 'react-hot-toast'
 import useErrorMessage from '../hooks/useErrorMessage'
+import { useSearchParams } from 'react-router-dom'
 
 const Home = () => {
-  const { data } = useErrorMessage(useGetBooksQuery())
-  // const { data, isLoading, error, isError } = useGetBooksQuery()
+  let [searchParams] = useSearchParams()
+  const keyword = searchParams.get('keyword') || ''
 
-  // useEffect(() => {
-  //   if (isError) {
-  //     toast.error(error?.data?.message)
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [isError])
+  const params = { keyword }
 
-  // if (isLoading) return <Loader />
+  const { data } = useErrorMessage(useGetBooksQuery(params))
+  const { search } = useErrorMessage(useGetBooksByTitleQuery(params))
+  // console.log('data home page--', data)
 
   return (
     <>
@@ -25,13 +23,19 @@ const Home = () => {
       <div className='row'>
         <div className='col-12 col-sm-6 col-md-12'>
           <h1 id='books_heading' className='text-secondary'>
+            {/* {keyword
+              ? `${searchTitle?.books?.length} Book found with keyword: ${keyword}`
+              : 'Latest Products'} */}
             New Books
           </h1>
 
-          <section id='products' class='mt-5'>
-            <div class='row'>
+          <section id='products' className='mt-5'>
+            <div className='row'>
               {data?.map((book) => (
-                <BookItem book={book} />
+                <BookItem book={book} key={book?.book_id} />
+              ))}
+              {search?.map((book) => (
+                <BookItem search={search} key={search?.book_title} />
               ))}
             </div>
           </section>
