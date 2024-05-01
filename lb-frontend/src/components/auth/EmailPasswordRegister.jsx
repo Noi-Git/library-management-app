@@ -31,6 +31,7 @@ const EmailPasswordRegister = () => {
     toast.success(
       `Email is sent to ${email}. Click the link to complete your registration`
     )
+    window.localStorage.setItem('emailForRegistration', email)
     setEmail('')
     setPassword('')
   }
