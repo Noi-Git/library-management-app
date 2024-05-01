@@ -5,21 +5,36 @@ import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } from 'firebase/auth'
+import { useNavigate } from 'react-router-dom'
+
 import book from '../../assets/images/book1x.png'
-// import axios from 'axios'
 import MetaData from '../layout/MetaData'
 import { auth } from '../firebase/firebase'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 const EmailPasswordRegister = () => {
+  const navigate = useNavigate()
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [user, setUser] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('----+', email, password)
+    // console.log('----+', email, password)
+
+    //validation
+    if (!email || !password) {
+      toast.error('Email and password is required')
+      return
+    }
+
+    if (password.length < 6) {
+      toast.error('Password must be at least 6 characters')
+      return
+    }
+
     await createUserWithEmailAndPassword(auth, email, password).then(
       async (userCredential) => {
         const user = userCredential.user
@@ -34,6 +49,7 @@ const EmailPasswordRegister = () => {
     window.localStorage.setItem('emailForRegistration', email)
     setEmail('')
     setPassword('')
+    navigate('/login')
   }
 
   useEffect(() => {
