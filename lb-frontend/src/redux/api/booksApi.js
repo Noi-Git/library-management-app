@@ -9,18 +9,18 @@ export const booksApi = createApi({
     getBooks: builder.query({
       query: (params) => ({
         url: '/books',
-        params: {},
+        params: { keyword: params?.keyword },
       }), //fetch from books endpoint
     }),
     getBookDeatils: builder.query({
       query: (id) => `/books/${id}`,
     }),
-    getBooksByTitle: builder.query({
-      query: (params) => ({
-        url: '/search',
-        params: { keyword: params?.keyword },
-      }), //fetch from books endpoint
-    }),
+    // getBooksByTitle: builder.query({
+    //   query: (params) => ({
+    //     url: '/search',
+    //     params: { keyword: params?.keyword },
+    //   }), //fetch from books endpoint
+    // }),
   }),
 })
 

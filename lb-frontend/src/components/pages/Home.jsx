@@ -1,7 +1,7 @@
 import MetaData from '../layout/MetaData'
 import {
   useGetBooksQuery,
-  useGetBooksByTitleQuery,
+  // useGetBooksByTitleQuery,
 } from '../../redux/api/booksApi'
 import BookItem from './books/BookItem'
 import useErrorMessage from '../hooks/useErrorMessage'
@@ -14,7 +14,7 @@ const Home = () => {
   const params = { keyword }
 
   const { data } = useErrorMessage(useGetBooksQuery(params))
-  const { search } = useErrorMessage(useGetBooksByTitleQuery(params))
+  // const { search } = useErrorMessage(useGetBooksByTitleQuery(params))
   console.log('data home page--', data)
 
   return (
@@ -34,9 +34,9 @@ const Home = () => {
               {data?.map((book) => (
                 <BookItem book={book} key={book?.book_id} />
               ))}
-              {search?.map((book) => (
+              {/* {data?.map((search) => (
                 <BookItem search={search} key={search?.book_title} />
-              ))}
+              ))} */}
             </div>
           </section>
         </div>
