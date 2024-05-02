@@ -4,6 +4,8 @@ $theme-colors: (
   'danger': teal
   );
 
+  $lightGreen: #b9e7e7;
+
   @import '~bootstrap/scss/bootstrap.scss';
 ;
 
@@ -25,8 +27,8 @@ $theme-colors: (
 
 // === Login and Register page ===
 .welcome-title {
-  margin-top: 7rem;
-  padding-left: 5rem;
+  margin-top: 10rem;
+  margin-bottom: 2rem;
 
   @media (max-width: 575.98px) { 
     margin-top: 3rem;
@@ -62,6 +64,16 @@ $theme-colors: (
 }
 .buttons {
   background-color:rgb(68, 122, 177);
+  width:40%;
+  color: white;
+  cursor: pointer;
+}
+.button-google {
+  background-color:rgb(68, 122, 177);
+  width:60%;
+  padding: 3px;
+  font-size: 1.2rem;
+  margin-top: 15px;
   color: white;
   cursor: pointer;
 }
@@ -74,3 +86,25 @@ $theme-colors: (
   cursor: pointer;
 }
 
+.container {
+  display: flex;
+  // background-color: rgb(159, 159, 222);
+  
+}
+.login-register {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 100vh;
+  // background-color:red;
+  margin: 0 auto;
+}
+.input {
+  width: 60%;
+  margin: 10px;
+}
+.button {
+  margin: 20px;
+}

@@ -1,20 +1,34 @@
 import { useEffect, useState } from 'react'
-import 'react-toastify/dist/ReactToastify.css'
-import { Row, Col } from 'react-bootstrap'
+import { auth, provider } from '../firebase/firebase'
+import { signInWithPopup } from 'firebase/auth'
+import { Button } from 'react-bootstrap'
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
-
-import book from '../../assets/images/book1x.png'
+import { FaGoogle } from 'react-icons/fa'
+// import book from '../../assets/images/book1x.png'
 import MetaData from '../layout/MetaData'
-import { auth } from '../firebase/firebase'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import '../../custom.scss'
 
 const EmailPasswordRegister = () => {
   const navigate = useNavigate()
+
+  const singInWithGoogle = async () => {
+    const results = await signInWithPopup(auth, provider)
+    console.log(results)
+    const authInfo = {
+      userID: results.user.uid,
+      name: results.user.displayName,
+      profilePhoto: results.user.photoURL,
+      isAuth: true,
+    }
+    localStorage.setItem('auth', JSON.stringify(authInfo))
+    navigate('/')
+  }
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -62,47 +76,48 @@ const EmailPasswordRegister = () => {
   }, [])
 
   return (
-    <>
+    <div className='container'>
       <MetaData title={'Register with Email and Password page'} />
       <ToastContainer />
-      <Row className='my-5'>
-        <Col>
-          <h2 className='welcome-title'>Register for an account</h2>
-        </Col>
-        <Col xs='5'>
-          <img
-            className='welcome-img'
-            src={book}
-            alt='open book a beautiful book'
-          />
-        </Col>
-      </Row>
-      <Row className=' form-width'>
-        <Col>
-          <div className='container'>
-            <input
-              type='email'
-              value={email}
-              placeholder='your email'
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type='password'
-              value={password}
-              placeholder='your password'
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button type='button' onClick={handleSubmit}>
-              Sing Up
-            </button>
-          </div>
-          <div>
-            <p>{user?.email}</p>
-            <p>{user?.emailVerified ? 'email verify: true' : 'false'}</p>
-          </div>
-        </Col>
-      </Row>
-    </>
+
+      <div className='login-register'>
+        <h4 className='welcome-title'>Register width email and password</h4>
+
+        <input
+          className='input'
+          type='email'
+          value={email}
+          placeholder='your email'
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <input
+          className='input'
+          type='password'
+          value={password}
+          placeholder='your password'
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <button className='button' type='button' onClick={handleSubmit}>
+          Sing Up
+        </button>
+
+        <Button
+          variant='primary'
+          type='submit'
+          className='button-google'
+          onClick={singInWithGoogle}
+        >
+          Sign In/Sign Up With Google Account
+        </Button>
+
+        {/* <div>
+          <p>{user?.email}</p>
+          <p>{user?.emailVerified ? 'email verify: true' : 'false'}</p>
+        </div> */}
+      </div>
+    </div>
   )
 }
 
