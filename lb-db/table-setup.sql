@@ -51,8 +51,6 @@ CREATE TABLE books (
   FOREIGN KEY (genre_id) REFERENCES genre(genre_id),
   author_id INT,
   FOREIGN KEY (author_id) REFERENCES authors(author_id),
-  author_type_id INT,
-  FOREIGN KEY (author_type_id) REFERENCES authors_type(author_type_id),
   total_copies INT NOT NULL,
   available_copies INT NOT NULL,
   created_at TIMESTAMP DEFAULT NOW(),
