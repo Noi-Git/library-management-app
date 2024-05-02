@@ -15,7 +15,30 @@ import AddBook from './components/pages/admin/AddBook'
 import Genre from './components/pages/admin/Genre'
 import EmailPasswordRegister from './components/auth/EmailPasswordRegister'
 
+import { auth } from './components/firebase/firebase'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+
 function App() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const idTokenResult = await user.getIdTokenResult()
+      }
+    })
+  }, [])
+
+  useEffect(() => {
+    //get current login user from firebase
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const idTokenResult = await user.getIdTokenResult()
+      }
+    })
+  }, [])
+
   return (
     <div className='app-bg'>
       <ToastContainer />
