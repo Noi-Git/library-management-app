@@ -10,9 +10,10 @@ import CustomPagination from '../layout/CustomPagination'
 
 const Home = () => {
   let [searchParams] = useSearchParams()
+  const page = searchParams.get('page') || 1
   const keyword = searchParams.get('keyword') || ''
 
-  const params = { keyword }
+  const params = { page, keyword }
 
   const { data } = useErrorMessage(useGetBooksQuery(params))
   // const { search } = useErrorMessage(useGetBooksByTitleQuery(params))

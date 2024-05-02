@@ -9,7 +9,7 @@ export const booksApi = createApi({
     getBooks: builder.query({
       query: (params) => ({
         url: '/books',
-        params: { keyword: params?.keyword },
+        params: { page: params?.page, keyword: params?.keyword },
       }), //fetch from books endpoint
     }),
     getBookDeatils: builder.query({
