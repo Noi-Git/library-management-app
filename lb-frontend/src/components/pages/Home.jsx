@@ -40,7 +40,7 @@ const Home = () => {
               ))} */}
             </div>
           </section>
-          <CustomPagination resPerPage={6} filteredProductsCount={10} />
+          <CustomPagination resPerPage={4} filteredProductsCount={6} />
         </div>
       </div>
     </>
