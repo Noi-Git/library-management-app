@@ -6,6 +6,7 @@ import {
 import BookItem from './books/BookItem'
 import useErrorMessage from '../hooks/useErrorMessage'
 import { useSearchParams } from 'react-router-dom'
+import CustomPagination from '../layout/CustomPagination'
 
 const Home = () => {
   let [searchParams] = useSearchParams()
@@ -39,6 +40,7 @@ const Home = () => {
               ))} */}
             </div>
           </section>
+          <CustomPagination resPerPage={6} filteredProductsCount={10} />
         </div>
       </div>
     </>
