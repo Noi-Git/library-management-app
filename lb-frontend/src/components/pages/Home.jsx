@@ -17,28 +17,37 @@ const Home = () => {
 
   const { data } = useErrorMessage(useGetBooksQuery(params))
   // const { search } = useErrorMessage(useGetBooksByTitleQuery(params))
-  console.log('data home page--', data)
+
+  const columnSize = keyword ? 4 : 3
 
   return (
     <>
       <MetaData title={'Home page'} />
       <div className='row'>
-        <div className='col-12 col-sm-6 col-md-12'>
+        {keyword && (
+          <div className='col-6 col-md-3 mt-5'>
+            <p>FILTERS</p>
+          </div>
+        )}
+        <div
+          className={keyword ? 'col-6 col-md-9' : 'col-12 col-sm-6 col-md-12'}
+        >
           <h1 id='books_heading' className='text-secondary'>
-            {/* {keyword
-              ? `${searchTitle?.books?.length} Book found with keyword: ${keyword}`
-              : 'Latest Products'} */}
-            New Books
+            {keyword
+              ? `${data?.length} Book found with keyword: ${keyword}`
+              : 'Latest Products'}
+            {/* New Books */}
           </h1>
 
           <section id='products' className='mt-5'>
             <div className='row'>
               {data?.map((book) => (
-                <BookItem book={book} key={book?.book_id} />
+                <BookItem
+                  book={book}
+                  key={book?.book_id}
+                  columnSize={columnSize}
+                />
               ))}
-              {/* {data?.map((search) => (
-                <BookItem search={search} key={search?.book_title} />
-              ))} */}
             </div>
           </section>
           <CustomPagination resPerPage={4} filteredProductsCount={6} />

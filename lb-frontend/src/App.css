@@ -111,8 +111,8 @@ nav {
   font-size: 1.2rem;
 }
 
-.card-img-top {
-  width: 150px;
+.card-img-main-card {
+  width: 75%;
   height: 200px;
 }
 

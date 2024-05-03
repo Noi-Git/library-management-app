@@ -15,12 +15,6 @@ export const booksApi = createApi({
     getBookDeatils: builder.query({
       query: (id) => `/books/${id}`,
     }),
-    // getBooksByTitle: builder.query({
-    //   query: (params) => ({
-    //     url: '/search',
-    //     params: { keyword: params?.keyword },
-    //   }), //fetch from books endpoint
-    // }),
   }),
 })
 
