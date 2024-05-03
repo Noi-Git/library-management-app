@@ -52,10 +52,9 @@ To recreate the database on your local environment, follow these steps:
 
 #### Backend
 
-- Node.js
-- Express.js
-- bcrypt.js
-- jsonwebtoken
+- Node.js and Express.js: to create books endpoints, authors endpoints, and genre endpoint
+- bcrypt.js: to has password
+- jsonwebtoken: to secure transmitting of the information between frontend and backend
 
 #### Frontend
 
@@ -72,3 +71,9 @@ To recreate the database on your local environment, follow these steps:
 
 - Firebase
 - Users can register and sign in using either their username and password or their Google account.
+
+![Alt register page] (./assests/register_page.png)
+
+![Alt home page] (./assests/home_page.png)
+
+![Alt single book page] (./assests/single_book_page.png)
