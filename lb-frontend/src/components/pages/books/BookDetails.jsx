@@ -5,7 +5,18 @@ const BookDetails = () => {
   const params = useParams()
   const { data } = useGetBookDeatilsQuery(params?.id)
   const bookById = data?.results
-  // console.log('book result data---:', bookById)
+  console.log('book result data---:', bookById)
+
+  const setItemToCart = () => {
+    const cartItem = {
+      bookId: bookById?.book_id,
+      bookTitle: bookById?.book_title,
+      bookGenre: bookById?.genre?.genre_name,
+      bookAuthorFirstName: bookById?.author_firstname,
+      bookAuthorMiddleName: bookById?.author_middlename,
+      bookAuthorLastName: bookById?.author_lastname,
+    }
+  }
 
   return (
     <>
