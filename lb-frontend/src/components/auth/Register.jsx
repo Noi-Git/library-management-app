@@ -1,41 +1,50 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Button, Form, Row, Col } from 'react-bootstrap'
+import 'react-toastify/dist/ReactToastify.css'
+import { Row, Col } from 'react-bootstrap'
+import { getAuth, sendSignInLinkToEmail } from 'firebase/auth'
 import book from '../../assets/images/book1x.png'
-import axios from 'axios'
 import MetaData from '../layout/MetaData'
+import { auth } from '../firebase/firebase'
+import { toast } from 'react-toastify'
 
 const Register = () => {
-  const [inputs, setInputs] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    password: '',
-  })
-  const [error, setError] = useState(null)
-
-  const navigate = useNavigate()
-
-  const handleChange = async (e) => {
-    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
-  // console.log(inputs)
+  const [email, setEmail] = useState('')
 
   const handleSubmit = async (e) => {
+    // console.log('register page---', email)
     e.preventDefault()
-
-    try {
-      await axios.post('/api/v1/auth/register', inputs)
-      navigate('/login')
-    } catch (err) {
-      // console.log(err)
-      setError(error.response.data)
+    // const auth = getAuth();
+    const config = {
+      url: process.env.REACT_APP_REGISTER_REDIRECT_URL,
+      handleCodeInApp: true,
     }
+    console.log('config---', config)
+    await sendSignInLinkToEmail(auth, email, config)
+      .then(() => {
+        // The link was successfully sent. Inform the user.
+        // Save the email locally so you don't need to ask the user for it again
+        // if they open the link on the same device.
+        window.localStorage.setItem('emailForSignIn', email)
+        // ...
+      })
+      .catch((error) => {
+        console.log(error.code)
+        console.log(error.message)
+        // ...
+      })
+    toast.success(
+      `Email is sent to ${email}. Click the link to complete your registration.`
+    )
+    // save user email in local storage
+    // window.localStorage.setItem('emailForRegistration', email)
+    // clear stat
+    setEmail('')
   }
 
   return (
     <>
       <MetaData title={'Register page'} />
+
       <Row className='my-5'>
         <Col>
           <h2 className='welcome-title'>Register for an account</h2>
@@ -51,57 +60,14 @@ const Register = () => {
 
       <Row className=' form-width'>
         <Col>
-          <Form>
-            <Form.Group className='mb-3' controlId='formBasicFirstname'>
-              <Form.Label>First name:</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Enter first name'
-                name='firstname'
-                onChange={handleChange}
-              />
-            </Form.Group>
-
-            <Form.Group className='mb-3' controlId='formBasicLastname'>
-              <Form.Label>Last name</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Enter last name'
-                name='lastname'
-                onChange={handleChange}
-              />
-            </Form.Group>
-
-            <Form.Group className='mb-3' controlId='formBasicEmail'>
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type='email'
-                placeholder='Enter email'
-                name='email'
-                onChange={handleChange}
-              />
-            </Form.Group>
-
-            <Form.Group className='mb-3' controlId='formBasicPassword'>
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type='password'
-                placeholder='Enter password'
-                name='password'
-                onChange={handleChange}
-              />
-            </Form.Group>
-
-            <Button variant='primary' type='submit' onClick={handleSubmit}>
-              Register
-            </Button>
-            {error && <p>{error}</p>}
-            <Form.Group className='mt-3'>
-              <Form.Text className='text-muted'>
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
-          </Form>
+          <label>Email address</label>
+          <input
+            type='email'
+            value={email}
+            name={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button onClick={handleSubmit}>Register</button>
         </Col>
       </Row>
     </>

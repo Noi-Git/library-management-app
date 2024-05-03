@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-const BookItem = ({ children, book }) => {
+const BookItem = ({ children, book, columnSize }) => {
   const {
     book_id,
     book_title,
@@ -14,10 +14,13 @@ const BookItem = ({ children, book }) => {
 
   return (
     <>
-      <div className='col-sm-12 col-md-6 col-lg-3 my-3' key={book_id}>
+      <div
+        className={`col-sm-12 col-md-6 col-lg-${columnSize} my-3`}
+        key={book_id}
+      >
         <div className='card p-3 rounded'>
           <img
-            className='card-img-top mx-auto'
+            className='card-img-main-card mx-auto'
             src={book_image_url}
             alt={book?.book_title}
           />
