@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Form, Row, Col } from 'react-bootstrap'
 import MetaData from '../../layout/MetaData'
-import book from '../../../assets/images/book1x.png'
+// import book from '../../../assets/images/book1x.png'
 
 const Genre = () => {
   return (

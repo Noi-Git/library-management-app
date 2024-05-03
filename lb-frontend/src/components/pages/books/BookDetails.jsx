@@ -1,21 +1,28 @@
 import { useParams } from 'react-router-dom'
 import { useGetBookDeatilsQuery } from '../../../redux/api/booksApi'
+import { useDispatch } from 'react-redux'
+import { setCartItem } from '../../../redux/features/cartSlice'
 
 const BookDetails = () => {
   const params = useParams()
+  const dispatch = useDispatch()
+
   const { data } = useGetBookDeatilsQuery(params?.id)
   const bookById = data?.results
-  console.log('book result data---:', bookById)
+  const selectedItem = data?.results[0]
+  // console.log('book result data---:', bookById)
+  // console.log('book -- data ---:', data?.results[0]?.book_title)
 
   const setItemToCart = () => {
     const cartItem = {
-      bookId: bookById?.book_id,
-      bookTitle: bookById?.book_title,
-      bookGenre: bookById?.genre?.genre_name,
-      bookAuthorFirstName: bookById?.author_firstname,
-      bookAuthorMiddleName: bookById?.author_middlename,
-      bookAuthorLastName: bookById?.author_lastname,
+      bookId: selectedItem?.book_id,
+      bookTitle: selectedItem?.book_title,
+      bookGenre: selectedItem?.genre_name,
+      bookAuthorFirstName: selectedItem?.author_firstname,
+      bookAuthorMiddleName: selectedItem?.author_middlename,
+      bookAuthorLastName: selectedItem?.author_lastname,
     }
+    dispatch(setCartItem(cartItem))
   }
 
   return (
@@ -62,6 +69,7 @@ const BookDetails = () => {
                 id='cart_btn'
                 className='btn btn-primary d-inline ms-4'
                 disabled=''
+                onClick={setItemToCart}
               >
                 Add to Cart
               </button>
