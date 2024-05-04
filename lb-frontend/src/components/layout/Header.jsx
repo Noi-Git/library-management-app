@@ -8,7 +8,8 @@ import { cartSlice } from '../../redux/features/cartSlice'
 const Header = () => {
   const navigate = useNavigate()
 
-  const { cartItem } = useSelector((state) => state.cart)
+  const { cartItems } = useSelector((state) => state.cart)
+  // console.log('00--', cartItem.length)
   console.log('state.cart in header--', cartSlice)
 
   return (
@@ -29,7 +30,7 @@ const Header = () => {
             <img className='shopping-cart' src={cart} alt='shopping cart' />
           </span>
           <span className='ms-1' id='cart_count'>
-            {cartItem?.length}
+            {cartItems?.length}
           </span>
         </a>
 

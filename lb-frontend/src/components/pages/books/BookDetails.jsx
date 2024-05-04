@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import MetaData from '../../layout/MetaData'
 import { useGetBookDeatilsQuery } from '../../../redux/api/booksApi'
 import { useDispatch } from 'react-redux'
 import { setCartItem } from '../../../redux/features/cartSlice'
@@ -27,6 +28,7 @@ const BookDetails = () => {
 
   return (
     <>
+      <MetaData title={book?.book_title} />
       {bookById?.map((book) => (
         <div key={book?.book_id}>
           <div className='row d-flex justify-content-around'>

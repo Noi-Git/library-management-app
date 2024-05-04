@@ -15,6 +15,7 @@ import EmailPasswordRegister from './components/auth/EmailPasswordRegister'
 import LoginNew from './components/auth/LoginNew'
 import './custom.scss'
 import './App.css'
+import Cart from './components/cart/Cart'
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             path='/email-password-register'
             element={<EmailPasswordRegister />}
           />
+          <Route path='/cart' element={<Cart />} />
         </Routes>
       </Container>
       <Footer />
