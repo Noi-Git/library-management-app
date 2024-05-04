@@ -9,20 +9,18 @@ const BookDetails = () => {
 
   const { data } = useGetBookDeatilsQuery(params?.id)
   const bookById = data?.results
-  console.log('bookById--', bookById)
-  // const selectedItem = data?.results[0]
+  const book = data?.results[0]
 
   const setItemToCart = () => {
     const cartItem = {
-      // bookId: bookById?.book_id,
-      bookTitle: bookById[0]?.book_title,
-      genre: bookById[0]?.genre_name,
-      authorFirstName: bookById[0]?.author_firstname,
-      authorMiddleName: bookById[0]?.author_middlename,
-      authorLastName: bookById[0]?.author_lastname,
+      bookId: book?.book_id,
+      bookTitle: book?.book_title,
+      genre: book?.genre_name,
+      authorFirstName: book?.author_firstname,
+      authorMiddleName: book?.author_middlename,
+      authorLastName: book?.author_lastname,
     }
     dispatch(setCartItem(cartItem))
-    console.log('cartItme in the details page---', cartItem)
   }
 
   return (
