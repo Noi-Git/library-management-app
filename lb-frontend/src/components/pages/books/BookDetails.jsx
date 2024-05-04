@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useGetBookDeatilsQuery } from '../../../redux/api/booksApi'
 import { useDispatch } from 'react-redux'
 import { setCartItem } from '../../../redux/features/cartSlice'
+import { toast } from 'react-toastify'
 
 const BookDetails = () => {
   const params = useParams()
@@ -21,6 +22,7 @@ const BookDetails = () => {
       authorLastName: book?.author_lastname,
     }
     dispatch(setCartItem(cartItem))
+    toast.success('Item is successfully added to cart')
   }
 
   return (

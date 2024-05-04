@@ -1,9 +1,16 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import avatar from '../../assets/images/profile.png'
 import cart from '../../assets/images/shopping_cart.png'
 import Search from './Search'
+import { useSelector } from 'react-redux'
+import { cartSlice } from '../../redux/features/cartSlice'
 
 const Header = () => {
+  const navigate = useNavigate()
+
+  const { cartItem } = useSelector((state) => state.cart)
+  console.log('state.cart in header--', cartSlice)
+
   return (
     <nav className='nav navbar row'>
       <div className='col-12 col-md-3 ps-5'>
@@ -22,7 +29,7 @@ const Header = () => {
             <img className='shopping-cart' src={cart} alt='shopping cart' />
           </span>
           <span className='ms-1' id='cart_count'>
-            0
+            {cartItem?.length}
           </span>
         </a>
 
