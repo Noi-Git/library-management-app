@@ -16,6 +16,7 @@ const BookDetails = () => {
   const setItemToCart = () => {
     const cartItem = {
       bookId: book?.book_id,
+      bookImage: book?.book_image_url,
       bookTitle: book?.book_title,
       genre: book?.genre_name,
       authorFirstName: book?.author_firstname,

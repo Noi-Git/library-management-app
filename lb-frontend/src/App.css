@@ -83,6 +83,10 @@ nav {
   font-weight: bold;
   font-size: 1rem;
 }
+.cart-item-image {
+  height: 100px;
+  width: 80px;
+}
 
 
 
@@ -223,12 +227,13 @@ footer {
 /* Cart */
 
 .cart-item {
+  color: #2e2e2e;
   margin: 1.8rem 0rem;
   padding: 0rem 0.7rem;
 }
 
 .cart-item a {
-  color: grey;
+  color: #2e2e2e;
 }
 
 #delete_cart_item {
@@ -239,10 +244,14 @@ footer {
   border: none;
 }
 
-#card_item_price {
-  color: #febd69;
-  font-weight: bold;
-  font-size: 1.4rem;
+.card_item_author {
+  color: #2e2e2e;
+  font-size: 1.2rem;
+}
+.cart-item-genre {
+  font-size: 0.9rem;
+  color: #2e2e2e;
+  padding-top: 5px;
 }
 
 #checkout_btn,
