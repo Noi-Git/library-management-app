@@ -87,6 +87,10 @@ nav {
   height: 100px;
   width: 80px;
 }
+.cart-image {
+  height: 60px;
+  width: 60px;
+}
 
 
 
@@ -236,11 +240,11 @@ footer {
   color: #2e2e2e;
 }
 
-#delete_cart_item {
+.delete_cart_item {
   color: red;
-  background: white;
+  background: #cadede;
   padding: 0.3rem 0.5rem;
-  font-size: 1.1rem;
+  font-size: 3rem;
   border: none;
 }
 
@@ -260,6 +264,7 @@ footer {
   border-color: #fa9c23;
   margin-top: 2rem;
   border-radius: 5rem;
+  font-size: 1.3rem;
 }
 
 #view_order_details {

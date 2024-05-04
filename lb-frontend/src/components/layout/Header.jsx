@@ -10,7 +10,7 @@ const Header = () => {
 
   const { cartItems } = useSelector((state) => state.cart)
   // console.log('00--', cartItem.length)
-  console.log('state.cart in header--', cartSlice)
+  // console.log('state.cart in header--', cartSlice)
 
   return (
     <nav className='nav navbar row'>

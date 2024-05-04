@@ -24,7 +24,7 @@ const BookDetails = () => {
       authorLastName: book?.author_lastname,
     }
     dispatch(setCartItem(cartItem))
-    toast.success('Item is successfully added to cart')
+    toast.success('Item add to cart')
   }
 
   return (
