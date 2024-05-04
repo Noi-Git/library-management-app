@@ -72,8 +72,14 @@ To recreate the database on your local environment, follow these steps:
 - Firebase
 - Users can register and sign in using either their username and password or their Google account.
 
-![Alt register page] (./assests/register_page.png)
+### Register / Login page
 
-![Alt home page] (./assests/home_page.png)
+![Alt register page](./assests/register_page.png)
 
-![Alt single book page] (./assests/single_book_page.png)
+### Home Page
+
+![Alt home page](./assests/home_page.png)
+
+### Single book page
+
+![Alt single book page](./assests/single_book_page.png)
