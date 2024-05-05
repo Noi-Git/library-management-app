@@ -74,19 +74,19 @@ To recreate the database on your local environment, follow these steps:
 
 ### Register / Login page
 
-![Alt register page](./assests/register.png)
+![Alt register page](./assests/register1.png)
 
 ### Home Page
 
-![Alt home page](./assests/home-page.png)
+![Alt home page](./assests/home.png)
 
 ### Single book page
 
-![Alt single book page](./assests/single-book.png)
+![Alt single book page](./assests/single-page.png)
 
 ### Single book page
 
-![Alt single book page](./assests/add-item.png)
+![Alt single book page](./assests/add-book.png)
 
 ### Single book page
 
