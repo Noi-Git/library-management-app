@@ -4,7 +4,7 @@ Welcome to the Library Management System repository! This README will guide you 
 
 ## Clone the Repository
 
-To get started, clone the main repository to your local machine using the following command:
+To get started, clone the main repository to your local computer using the following command:
 `git clone <repo code>`
 
 ## Setup Project
@@ -39,7 +39,7 @@ The application will run on port 3000.
 
 ## lb-db
 
-This directory contains a MySQL dump file named mysql_dump.sql.
+This directory contains a MySQL dump file named `mysql_dump.sql`.
 
 **Database Setup**
 To recreate the database on your local environment, follow these steps:
@@ -74,12 +74,20 @@ To recreate the database on your local environment, follow these steps:
 
 ### Register / Login page
 
-![Alt register page](./assests/register_page.png)
+![Alt register page](./assests/register.png)
 
 ### Home Page
 
-![Alt home page](./assests/home_page.png)
+![Alt home page](./assests/home-page.png)
 
 ### Single book page
 
-![Alt single book page](./assests/single_book_page.png)
+![Alt single book page](./assests/single-book.png)
+
+### Single book page
+
+![Alt single book page](./assests/add-item.png)
+
+### Single book page
+
+![Alt single book page](./assests/checkout.png)
