@@ -1,32 +1,38 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import MetaData from '../../layout/MetaData'
 import { useGetBookDeatilsQuery } from '../../../redux/api/booksApi'
 import { useDispatch } from 'react-redux'
 import { setCartItem } from '../../../redux/features/cartSlice'
+import { toast } from 'react-toastify'
 
 const BookDetails = () => {
   const params = useParams()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const { data } = useGetBookDeatilsQuery(params?.id)
   const bookById = data?.results
-  console.log('bookById--', bookById)
-  // const selectedItem = data?.results[0]
+  const book = data?.results[0]
 
   const setItemToCart = () => {
     const cartItem = {
-      // bookId: bookById?.book_id,
-      bookTitle: bookById[0]?.book_title,
-      genre: bookById[0]?.genre_name,
-      authorFirstName: bookById[0]?.author_firstname,
-      authorMiddleName: bookById[0]?.author_middlename,
-      authorLastName: bookById[0]?.author_lastname,
+      bookId: book?.book_id,
+      bookImage: book?.book_image_url,
+      bookTitle: book?.book_title,
+      genre: book?.genre_name,
+      authorFirstName: book?.author_firstname,
+      authorMiddleName: book?.author_middlename,
+      authorLastName: book?.author_lastname,
     }
     dispatch(setCartItem(cartItem))
-    console.log('cartItme in the details page---', cartItem)
+    toast.success('Item add to cart')
   }
+
+  const backToHomePage = () => navigate(`/`)
 
   return (
     <>
+      <MetaData title={book?.book_title} />
       {bookById?.map((book) => (
         <div key={book?.book_id}>
           <div className='row d-flex justify-content-around'>
@@ -69,14 +75,19 @@ const BookDetails = () => {
                 id='cart_btn'
                 className='btn btn-primary d-inline ms-4'
                 disabled=''
+                onClick={() => backToHomePage()}
+              >
+                Back
+              </button>
+              <button
+                type='button'
+                id='cart_btn'
+                className='btn btn-primary d-inline ms-4'
+                disabled=''
                 onClick={setItemToCart}
               >
                 Add to Cart
               </button>
-
-              <div className='alert alert-danger my-5' type='alert'>
-                Login to post your review.
-              </div>
             </div>
           </div>
         </div>
