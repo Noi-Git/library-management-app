@@ -3,7 +3,7 @@ import avatar from '../../assets/images/profile.png'
 import cart from '../../assets/images/shopping_cart.png'
 import Search from './Search'
 import { useSelector } from 'react-redux'
-import { cartSlice } from '../../redux/features/cartSlice'
+// import { cartSlice } from '../../redux/features/cartSlice'
 
 const Header = () => {
   const navigate = useNavigate()

@@ -91,6 +91,20 @@ nav {
   height: 60px;
   width: 60px;
 }
+.cart-empty {
+  display: flex;
+  width: 100vw;
+  text-align: center;
+  
+}
+.cart-empty-button {
+  width: 250px;
+  border-radius: 2rem;
+  background-color: #b1b134;
+  border: none;
+  padding: 0.5rem 2rem;
+  margin: 0 auto;
+}
 
 
 
@@ -167,13 +181,14 @@ footer {
   font-weight: bold;
 }
 
-#cart_btn,
-#review_btn {
+/* .cart_btn
+{
   border-radius: 2rem;
   background-color: #b1b134;
   border: none;
   padding: 0.5rem 2rem;
-}
+  margin: 0;
+} */
 
 #product_seller {
   color: grey;
@@ -244,7 +259,7 @@ footer {
   color: red;
   background: #cadede;
   padding: 0.3rem 0.5rem;
-  font-size: 3rem;
+  font-size: 2rem;
   border: none;
 }
 

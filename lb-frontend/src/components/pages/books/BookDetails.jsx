@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import MetaData from '../../layout/MetaData'
 import { useGetBookDeatilsQuery } from '../../../redux/api/booksApi'
 import { useDispatch } from 'react-redux'
@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 const BookDetails = () => {
   const params = useParams()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const { data } = useGetBookDeatilsQuery(params?.id)
   const bookById = data?.results
@@ -26,6 +27,8 @@ const BookDetails = () => {
     dispatch(setCartItem(cartItem))
     toast.success('Item add to cart')
   }
+
+  const backToHomePage = () => navigate(`/`)
 
   return (
     <>
@@ -67,6 +70,15 @@ const BookDetails = () => {
                 </span>
               </p>
 
+              <button
+                type='button'
+                id='cart_btn'
+                className='btn btn-primary d-inline ms-4'
+                disabled=''
+                onClick={() => backToHomePage()}
+              >
+                Back
+              </button>
               <button
                 type='button'
                 id='cart_btn'
