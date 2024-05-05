@@ -88,10 +88,6 @@ const BookDetails = () => {
               >
                 Add to Cart
               </button>
-
-              <div className='alert alert-danger my-5' type='alert'>
-                Login to post your review.
-              </div>
             </div>
           </div>
         </div>
