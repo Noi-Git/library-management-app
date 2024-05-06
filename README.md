@@ -94,7 +94,7 @@ To recreate the database on your local environment, follow these steps:
 
 - View Book Details: Get an overview of the selected book, including its title, author, and genre
 
-![Alt single book page](./assests/single-page.png)
+![Alt single book page](./assests/single_page.png)
 
 ### Single book page when clicked on Add to Cart button
 
