@@ -90,7 +90,7 @@ const Cart = () => {
           <div className='d-flex flex-column'>
             <div id='order_summary'>
               <button id='checkout_btn' className='btn btn-primary w-100'>
-                Check out
+                Check Out
               </button>
             </div>
           </div>

@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom'
 import { auth, provider } from '../firebase/firebase'
 import { signInWithPopup } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
-import { Container, Button, Form, Row, Col } from 'react-bootstrap'
+import { Container, Button } from 'react-bootstrap'
+import { FaGoogle } from 'react-icons/fa'
 import reading from '../../assets/images/reading1x.png'
 import MetaData from '../layout/MetaData'
 
@@ -25,36 +27,30 @@ const Login = () => {
     <>
       <MetaData title={'Login page'} />
       <Container>
-        <Row className='my-5'>
-          <Col>
-            <h2 className='welcome-title'>Welcome to Library</h2>
-          </Col>
-          <Col xs='5'>
-            <img
-              className='welcome-img'
-              src={reading}
-              alt='Gnome reading a book'
-            />
-          </Col>
-        </Row>
-
-        <Row className=' form-width d-flex justify-content-center'>
-          <Col>
-            <Form>
-              <Form.Group className='mb-3' controlId='formBasicPassword'>
-                <Form.Label>Sign In With Google to Continue</Form.Label>
-              </Form.Group>
-            </Form>
-            <Button
-              variant='primary'
-              type='submit'
-              className='buttons'
-              onClick={singInWithGoogle}
-            >
-              Sign In With Google Account
-            </Button>
-          </Col>
-        </Row>
+        <div className='d-flex flex-column mb-3 justify-content-center mx-auto'>
+          <h2 className='welcome-title'>Welcome to Library</h2>
+          <img
+            className='welcome-img'
+            src={reading}
+            alt='Gnome reading a book'
+          />
+          <Button
+            data-testid='google-sign-in'
+            variant='primary'
+            type='submit'
+            className='google-login-button'
+            onClick={singInWithGoogle}
+          >
+            <FaGoogle /> Sign In With Google Account
+          </Button>
+          <p className='login-register-text'>
+            Don't have an account? {/* <span> */}
+          </p>
+          <Link to={'/register'} className='login-register'>
+            Register
+          </Link>
+          {/* </span> */}
+        </div>
       </Container>
     </>
   )
