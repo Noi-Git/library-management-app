@@ -94,7 +94,7 @@ To recreate the database on your local environment, follow these steps:
 
 - View Book Details: Get an overview of the selected book, including its title, author, and genre
 
-![Alt single book page](./assests/single-book.png)
+![Alt single book page](./assests/single-page.png)
 
 ### Single book page when clicked on Add to Cart button
 
@@ -103,7 +103,7 @@ To recreate the database on your local environment, follow these steps:
 - Back Button: Easily navigate back to the home page by clicking the "Back" button. Continue browsing
 - Cart Button: Click on the "Cart" button in the navigation bar to view your current cart contents and proceed to checkout
 
-![Alt single book page with add](./assests/add-item.png)
+![Alt single book page with add](./assests/add-book.png)
 
 ### Checkout page
 
