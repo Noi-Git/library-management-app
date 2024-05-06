@@ -68,8 +68,26 @@ $theme-colors: (
   color: white;
   cursor: pointer;
 }
-.button-google {
-  background-color:rgb(68, 122, 177);
+.btn-home {
+  color: white;
+  font-size: 1.4rem;
+  padding-left: 20px;
+  text-decoration: none;
+
+  &:hover {
+    color: rgb(68, 122, 177);
+    font-weight: bold;
+
+  }
+  &:visited {
+    color: white;
+  }
+  &:active {
+    color: white
+  }
+}
+.google-register-button {
+  background-color: rgb(7, 102, 197);
   width:60%;
   padding: 3px;
   font-size: 1.2rem;
@@ -77,6 +95,58 @@ $theme-colors: (
   color: white;
   cursor: pointer;
 }
+.google-login-button {
+  background-color: rgb(7, 102, 197);
+  font-size: 1.2rem;
+  width:100%;
+  margin: 60px 0 40px 0;
+  padding: 8px;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    
+    background-color: rgb(22, 128, 235);
+    color: white;
+  }
+}
+.login-btn {
+  background-color: #df8f2d;
+  color: white;
+  font-size: 1.2rem;
+
+  &:hover {
+    background-color: #e6611f;
+    color: white;
+  }
+}
+.login-register {
+  text-decoration: none;
+  font-size: 1.3rem;
+  &:hover {
+    font-weight: bold;
+  }
+}
+.login-register-text {
+  text-align: center;
+}
+.signup-btn {
+  background-color: #fa9c23;
+  border-color: #fa9c23;
+  width: 60%;
+  color: white;
+  cursor: pointer;
+  padding: 5px 0;
+  border-radius: 5px;
+  border: none;
+  margin: 40px 0 10px 0;
+}
+.register-input {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 5px;
+}
+
 .read-more {
   // background-color: rgb(250, 227, 183);
   margin-left: 6px;
@@ -94,13 +164,12 @@ $theme-colors: (
 .login-register {
   display: flex;
   flex-direction: column;
-  // justify-content: center;
   align-items: center;
   width: 80%;
   height: 100vh;
-  // background-color:red;
   margin: 0 auto;
 }
+
 .input {
   width: 60%;
   margin: 10px;

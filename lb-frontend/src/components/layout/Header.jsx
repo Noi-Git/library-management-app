@@ -9,8 +9,6 @@ const Header = () => {
   const navigate = useNavigate()
 
   const { cartItems } = useSelector((state) => state.cart)
-  // console.log('00--', cartItem.length)
-  // console.log('state.cart in header--', cartSlice)
 
   return (
     <nav className='nav navbar row'>
@@ -18,7 +16,12 @@ const Header = () => {
         <div className='navbar-brand'>
           <Link to={'/'} className='logo'>
             Noi's Library App
-          </Link>
+          </Link>{' '}
+          <span>
+            <Link to={'/'} className='btn-home'>
+              Home
+            </Link>
+          </span>
         </div>
       </div>
       <div className='col-12 col-md-6 mt-2 mt-md-0'>
@@ -48,52 +51,12 @@ const Header = () => {
             </figure>
             <span>User</span>
           </button>
-          <div
-            className='dropdown-menu w-100'
-            aria-labelledby='dropdownMenuButton'
-          >
-            <a className='dropdown-item' href='/admin/dashboard'>
-              Dashboard
-            </a>
-            <a className='dropdown-item' href='/me/orders'>
-              Orders
-            </a>
-            <a className='dropdown-item' href='/me/profile'>
-              Profile
-            </a>
-            <a className='dropdown-item' href='/'>
-              Logout
-            </a>
-          </div>
-          <div
-            className='dropdown-menu w-100'
-            aria-labelledby='dropDownMenuButton'
-          >
-            <a className='dropdown-item' href='/admin/dashboard'>
-              Dashboard{' '}
-            </a>
-
-            <a className='dropdown-item' href='/me/orders'>
-              {' '}
-              Orders{' '}
-            </a>
-
-            <a className='dropdown-item' href='/me/profile'>
-              {' '}
-              Profile{' '}
-            </a>
-
-            <a className='dropdown-item text-danger' href='/'>
-              {' '}
-              Logout{' '}
-            </a>
-          </div>
         </div>
 
-        <a href='/login' className='btn ms-4 login_btn'>
+        <Link to={'/login'} className='btn ms-4 login-btn'>
           {' '}
           Login{' '}
-        </a>
+        </Link>
       </div>
     </nav>
   )

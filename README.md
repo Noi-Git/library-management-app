@@ -63,31 +63,56 @@ To recreate the database on your local environment, follow these steps:
 - Bootstrap, SCSS, and Flexbox
 - React Testing Library
 
+#### Authentication
+
+- Firebase
+- Users can register and sign in using either their username and password or their Google account
+
 #### Database
 
 - MySQL
 
-#### Authentication
-
-- Firebase
-- Users can register and sign in using either their username and password or their Google account.
+![Alt database diagram page](./assests/database-diagram.png)
 
 ### Register / Login page
 
+- allow user to log-in and register with Google account
+- allow user to register with email and password
+- email varification link will be sent to user to confirm
+
 ![Alt register page](./assests/register1.png)
+![Alt email-confirmation link](./assests/email-confirmation.png)
 
 ### Home Page
+
+- Show all books in the collection
+- User will be able to use search feature to find books by keyword
 
 ![Alt home page](./assests/home.png)
 
 ### Single book page
 
-![Alt single book page](./assests/single-page.png)
+- View Book Details: Get an overview of the selected book, including its title, author, and genre
 
-### Single book page
+![Alt single book page](./assests/single-book.png)
 
-![Alt single book page](./assests/add-book.png)
+### Single book page when clicked on Add to Cart button
 
-### Single book page
+- Add to Cart Button: wil add the book to your shopping cart
+- Confirmation Message: Upon clicking the "Add to Cart" button, a popup will appear confirming that the book has been successfully added to your cart
+- Back Button: Easily navigate back to the home page by clicking the "Back" button. Continue browsing
+- Cart Button: Click on the "Cart" button in the navigation bar to view your current cart contents and proceed to checkout
 
-![Alt single book page](./assests/checkout.png)
+![Alt single book page with add](./assests/add-item.png)
+
+### Checkout page
+
+The Cart page:
+
+- Book List: View the books you've added to your cart, including their titles, authors, and genre
+- Book Details: Click on the book image or title to return to the selected book's description page for further details
+- Delete Button: Remove a book from your cart by clicking on the trash-can button next to it
+- user will be able to finish checking out book by clicking at the Check out button
+- Check Out Button: Click on the "Check Out" button to checkout
+
+![Alt checkout page](./assests/checkout.png)
